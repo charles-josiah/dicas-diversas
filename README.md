@@ -24,7 +24,7 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
   netstat -tulpn
   ````
 * LINUX - A partir do redhat/centos 7 não temos mais netstat 
-  <h6> Referencia: @NixPal Chris/h6>
+  Referencia: @NixPal Chris
   
   | Comando | Descrição |
   | :--- | :--- |
