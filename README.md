@@ -26,14 +26,16 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
 * LINUX - A partir do redhat/centos 7 não temos mais netstat 
   <h6> Referencia: https://www.nixpal.com/netstat-ss-and-rhel-7-centos/ </h6>
 
-  ````
-  ss -s (Lista conexões estabelecidas, fechadas, orfã, w esperando fechamento. 
-  ss -l (lista as portas abertas) 
-  ss -pl (lista as postas abertas e usuarios que a estão utilizando)
-  ss -t -a (lista todas as portas TCP)
-  ss -u -a  (lista todas as portas UDP)
-  ss -w -a  (lista portas RAW)
-  ss -x -a  (lista todas os Sockets)
+| Command | Description |
+| --- | --- |
+| ss -s    | (Lista conexões estabelecidas, fechadas, orfã, w esperando fechamento. | 
+| ss -l    | (lista as portas abertas) |
+| ss -pl   | (lista as postas abertas e usuarios que a estão utilizando) |
+| ss -t -a | (lista todas as portas TCP) |
+|ss -u -a | (lista todas as portas UDP) |
+|ss -w -a | (lista portas RAW) |
+|ss -x -a | (lista todas os Sockets) |
+
   ss -la -4 (lista conexões em ipv4) 
   ss -la -5 (lista conexões em ipv6) 
   ss -o state established '( dport = :smtp or sport = :smtp )'   (lista portas estabalecias com origem/destino porta smtp)
@@ -49,7 +51,7 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
   ss  state connected sport = :http (lista todas as conexão tipo connetec com porta origem 80)
   ss \( sport = :http or sport = :https \)
   ss -o state fin-wait-1 \( sport = :http or sport = :https \) dst 192.168.1/24
-  ````
+ 
 
 
 <h6>
