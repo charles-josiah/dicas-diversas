@@ -1,14 +1,14 @@
-# dicas-diversas
+# Dicas diversas 
 Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros.... 
 
-
-## Linux
-## Comandos rapidos
-
+## Zimbra
 * ZIMBRA - Gerar lista com as "Listas de Distribuição" e seus integrantes:
   ````
   for a in `zmprov gadl `; do echo "lista: $a" ; zmprov  gdl $a  | grep zimbraMailForwardingAddress | cut -f2 -d " "; echo "-----";  done 
   ````
+
+## Linux
+
 * LINUX - Ping Multicast em IPv6 - envia uma solicitação de ICMPv6  de 'echo request (type 128)' para 'all-nodes' no endereço multicast. Para ver a vizinhança depois, ip neighbor.
   ````
   ping6 -I <interface> ff02::1
@@ -50,6 +50,7 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
   ss \( sport = :http or sport = :https \)
   ss -o state fin-wait-1 \( sport = :http or sport = :https \) dst 192.168.1/24
   ````
+
 
 <h6>
 Obs.: Maioria destes comandos foram utilizados para resolver problemas pontuais, a alguns são de muito, muito tempo atrás, não possuem nenhuma "boniteza" e organização nos mesmos. São mais como notas para não esquecimento :D 
