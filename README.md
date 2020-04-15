@@ -26,8 +26,8 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
 * LINUX - A partir do redhat/centos 7 não temos mais netstat 
   <h6> Referencia: https://www.nixpal.com/netstat-ss-and-rhel-7-centos/ </h6>
   
-  | Command | Description |
-  | --- | --- |
+  | Comando | Descrição |
+  | :---: | :---: |
   | ss -s    | (Lista conexões estabelecidas, fechadas, orfã, w esperando fechamento. | 
   | ss -l    | (lista as portas abertas) |
   | ss -pl   | lista as postas abertas e usuarios que a estão utilizando) |
@@ -49,7 +49,7 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
   | ss  dport != :22 | lista todas as conexão com diferente que destino porta 22 | 
   | ss  state connected sport = :http | lista todas as conexão com porta origem 80 | 
   | ss \( sport = :http or sport = :https \) | lista todas as conexão com porta origem 80 OU 443 |   
-  | s -o state fin-wait-1 \( sport = :http or sport = :https \) dst <IP> | | lista todas as conexão com porta origem 80 OU 443, do statdo fin-wait-1 e com destino <IP> |  
+  | s -o state fin-wait-1 \( sport = :http or sport = :https \) dst <IP> | lista todas as conexão com porta origem 80 OU 443, do statdo fin-wait-1 e com destino <IP> |  
  
 
 
