@@ -27,7 +27,7 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
   <h6> Referencia: https://www.nixpal.com/netstat-ss-and-rhel-7-centos/ </h6>
   
   | Comando | Descrição |
-  | :---: | :---: |
+  | :--- | :--- |
   | ss -s    | (Lista conexões estabelecidas, fechadas, orfã, w esperando fechamento. | 
   | ss -l    | (lista as portas abertas) |
   | ss -pl   | lista as postas abertas e usuarios que a estão utilizando) |
