@@ -8,6 +8,7 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
 [VMWARE](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#VMWARE) <br> 
 [MACOS](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#MACOS) <br> 
 
+<hr>
 
 ## Zimbra
 * ZIMBRA - Gerar lista com as "Listas de Distribuição" e seus integrantes:
