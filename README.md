@@ -78,6 +78,25 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
   } 
 
   ````
+* Boas praticas de configuração de LUN/Controladora ISCSI no VMWare e Compelent SCv2020
+  <h6>Fonte: https://downloads.dell.com/manuals/common/sc-series-vmware-vsphere-best-practices_en-us.pdf </h6>
+
+  ````
+  esxcli system module parameters set -p issue_scsi_cmd_to_bringup_drive=0 -m lsi_msgpt3
+
+  for a in `esxcli storage nmp device list | grep ^naa `; do esxcli storage nmp psp roundrobin deviceconfig set --device $a --type=iops --iops=3; done
+
+  esxcli storage nmp satp rule add -s VMW_SATP_ALUA -V COMPELNT -P VMW_PSP_RR -o disable_action_OnRetryErrors -e "Dell EMC SC Series Claim Rule"
+
+  esxcli iscsi adapter param set -A=vmhba64 -k=LoginTimeout -v=5
+  esxcli system module parameters set -m iscsi_vmk -p iscsivmk_LunQDepth=255
+  ```` 
+
+
+
+
+
+
 
 
 <h6>
