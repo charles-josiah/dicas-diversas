@@ -1,6 +1,12 @@
 # Dicas diversas 
 Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros.... 
 
+https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#Zimbra
+https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#Linux
+https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#VMWARE
+https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#MACOS
+
+
 ## Zimbra
 * ZIMBRA - Gerar lista com as "Listas de Distribuição" e seus integrantes:
   ````
@@ -50,7 +56,7 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
   | ss \( sport = :http or sport = :https \) | lista todas as conexão com porta origem 80 OU 443 |   
   | s -o state fin-wait-1 \( sport = :http or sport = :https \) dst <IP> | lista todas as conexão com porta origem 80 OU 443, do statdo fin-wait-1 e com destino <IP> |  
  
-## Vistualização Vmware 
+## VMWARE 
 
 * VMWARE - Troca da senha de root do HOST VMWare ESXi via VCenter
   <h6>Fonte: https://www.linkedin.com/pulse/reset-esxi-root-password-through-vcenter-esxcli-method-buschhaus/</h6>
