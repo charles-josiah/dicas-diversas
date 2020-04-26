@@ -25,7 +25,6 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
   ````
 * LINUX - A partir do redhat/centos 7 não temos mais netstat  <h6>Referencia: @NixPal Chris</h6>
  
-  
   | Comando | Descrição |
   | :--- | :--- |
   | ss -s    | (Lista conexões estabelecidas, fechadas, orfã, w esperando fechamento. | 
@@ -53,7 +52,7 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
  
 ## Vistualização Vmware 
 
-* Troca da senha de root do HOST VMWare ESXi via VCenter
+* VMWARE - Troca da senha de root do HOST VMWare ESXi via VCenter
   <h6>Fonte: https://www.linkedin.com/pulse/reset-esxi-root-password-through-vcenter-esxcli-method-buschhaus/</h6>
   
   ````
@@ -78,7 +77,7 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
   } 
 
   ````
-* Boas praticas de configuração de LUN/Controladora ISCSI no VMWare e Compelent SCv2020
+* VMWARE - Boas praticas de configuração de LUN/Controladora ISCSI no VMWare e Compelent SCv2020
   <h6>Fonte: https://downloads.dell.com/manuals/common/sc-series-vmware-vsphere-best-practices_en-us.pdf </h6>
 
   ````
@@ -91,12 +90,11 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
   esxcli iscsi adapter param set -A=vmhba64 -k=LoginTimeout -v=5
   esxcli system module parameters set -m iscsi_vmk -p iscsivmk_LunQDepth=255
   ```` 
-
-
-
-
-
-
+ 
+* VMWARE - LINUX - RedHAT / Centos 6 - Disk Reclain
+  ```` 
+  reclain area disk  fstrim -v /test
+  ```` 
 
 
 <h6>
