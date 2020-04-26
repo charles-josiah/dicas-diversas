@@ -120,11 +120,11 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
   
   # Exibir a configuração DNS
   scutil --dns
-  ````
-  # Scripts Legal:
+  
+  #Scripts Legal:
   https://rakhesh.com/powershell/vpn-client-over-riding-dns-on-macos/
 
-   
+  ```` 
 
 
 
