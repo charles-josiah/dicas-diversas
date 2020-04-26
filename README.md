@@ -51,6 +51,33 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
   | ss \( sport = :http or sport = :https \) | lista todas as conexão com porta origem 80 OU 443 |   
   | s -o state fin-wait-1 \( sport = :http or sport = :https \) dst <IP> | lista todas as conexão com porta origem 80 OU 443, do statdo fin-wait-1 e com destino <IP> |  
  
+## Vistualização Vmware 
+
+* Troca da senha de root do HOST VMWare ESXi via VCenter
+<h6>Fonte: https://www.linkedin.com/pulse/reset-esxi-root-password-through-vcenter-esxcli-method-buschhaus/</h6>
+
+Inicie um powercli, pode ser via docker: 
+````
+docker pull vmware/powerclicore
+docker run --rm -it vmware/powerclicore
+
+Set-PowerCLIConfiguration -InvalidCertificateAction:Ignore
+Connect-VIServer -Server <IP_VCENTER> -User <ADMINISRADOR_TOP>  -Password <SENHA_TOP>
+$vmhosts = Get-VMHost
+
+$NewCredential = Get-Credential -UserName "root" -Message "NOVA SENHA QUE VC DESEJA" 
+
+Foreach ($vmhost in $vmhosts) {
+    $esxcli = get-esxcli -vmhost $vmhost -v2 #Gain access to ESXCLI on the host.
+    $esxcliargs = $esxcli.system.account.set.CreateArgs() #Get Parameter list (Arguments)
+    $esxcliargs.id = $NewCredential.UserName #Specify the user to reset
+    $esxcliargs.password = $NewCredential.GetNetworkCredential().Password #Specify the new password
+    $esxcliargs.passwordconfirmation = $NewCredential.GetNetworkCredential().Password
+    Write-Host ("Resetting password for: " + $vmhost) #Debug line so admin can see what's happening.
+    $esxcli.system.account.set.Invoke($esxcliargs) #Run command, if returns "true" it was successful.
+ }
+
+````
 
 
 <h6>
