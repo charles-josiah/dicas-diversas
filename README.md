@@ -55,8 +55,9 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
 
 * Troca da senha de root do HOST VMWare ESXi via VCenter
   <h6>Fonte: https://www.linkedin.com/pulse/reset-esxi-root-password-through-vcenter-esxcli-method-buschhaus/</h6>
+  
   ````
-  #Inicie um powercli, pode ser via docker: 
+  # Inicie um powercli, pode ser via docker: 
   docker pull vmware/powerclicore
   docker run --rm -it vmware/powerclicore
 
