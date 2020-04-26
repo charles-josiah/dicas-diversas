@@ -96,6 +96,41 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
   reclain area disk  fstrim -v /test
   ```` 
 
+## MACOS 
+
+* MACOS - Limpar backups antigos TimeMachine
+  ```` 
+  for i in /Volumes/BKP/Backups.backupdb/<USER>/2017-01*; do tmutil delete "$i" ; done  
+  ```` 
+* MACOS - Mostar Arquivos Ocultos
+  ```` 
+  defaults write com.apple.finder AppleShowAllFiles YES
+  killall Finder /System/Library/CoreServices/Finder.app
+  defaults write com.apple.finder AppleShowAllFiles NO
+  killall Finder /System/Library/CoreServices/Finder.app
+  ```` 
+* MACOS - Limpar cache USB
+  ```` 
+  sudo kextunload IOUSBMassStorageClass.kext
+  sudo kextload /System/Library/Extensions/IOUSBMassStorageClass.kext
+  ```` 
+* MACOS - Limpar DNS cache 
+  ```` 
+  sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache
+  
+  # Exibir a configuração DNS
+  scutil --dns
+  ````
+  # Scripts Legal:
+  https://rakhesh.com/powershell/vpn-client-over-riding-dns-on-macos/
+
+   
+
+
+
+
+
+
 
 <h6>
 Obs.: Maioria destes comandos foram utilizados para resolver problemas pontuais, a alguns são de muito, muito tempo atrás, não possuem nenhuma "boniteza" e organização nos mesmos. São mais como notas para não esquecimento :D 
