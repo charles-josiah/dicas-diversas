@@ -62,7 +62,7 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
   docker run --rm -it vmware/powerclicore
 
   Set-PowerCLIConfiguration -InvalidCertificateAction:Ignore
-  Connect-VIServer -Server <IP_VCENTER> -User <ADMINISRADOR_TOP>  -Password <SENHA_TOP>
+  Connect-VIServer -Server <IP_VCENTER> -User <ADMINISRADOR_TOP>  -Password <SENHA_ADMIN_TOP>
   $vmhosts = Get-VMHost
 
   $NewCredential = Get-Credential -UserName "root" -Message "NOVA SENHA QUE VC DESEJA" 
@@ -77,7 +77,7 @@ Dicas diversas sobre comandos linux, MACOS, Fortinet, Zimbra, e outros....
      $esxcli.system.account.set.Invoke($esxcliargs) #Run command, if returns "true" it was successful.
   } 
 
-````
+  ````
 
 
 <h6>
