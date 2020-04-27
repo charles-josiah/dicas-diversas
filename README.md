@@ -309,8 +309,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   # para regras já existentes, bug que precisa ativar o fsso na mão, set fsso enable 
   ````
 * FGT - FSSO - Limpar Cache e aplicação DNS
-  <h6> http://kb.fortinet.com/kb/viewContent.do?externalId=FD30618 </h6> 
-  
+  - Fonte: http://kb.fortinet.com/kb/viewContent.do?externalId=FD30618 
   ````
   diag test application dnsproxy 1
   diag test application dnsproxy ? # ver outros niveis de teste
