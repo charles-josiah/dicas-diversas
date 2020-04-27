@@ -136,7 +136,20 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   Joining to AD Domain:   dominio.local
   With Computer DNS Name: srvvcenter01.dominio.local
   ```` 
-  
+* VMWARE -  Ligar maquinas via CLI
+  <h6>Fonte: 
+http://buildvirtual.net/troubleshooting-esxi-vlan-configurations-using-command-line-tools/ </h6>
+  ```` 
+  # retonar a lista de maquinas com seu ID 
+  vim-cmd vmsvc/getallvms
+  # podemos usar um grep para mostrar somente a maquina desejada 
+  vim-cmd vmsvc/getallvms |grep <vm name>
+  # Exibir o status da maquina pelo vmid.
+  vim-cmd vmsvc/power.getstate <vmid>
+  # Ligar a maquina
+  vim-cmd vmsvc/power.on <vmid>
+  ```` 
+
 <hr>
 
 ## MACOS 
