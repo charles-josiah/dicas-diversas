@@ -126,7 +126,9 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   ```` 
   reclain area disk  fstrim -v /test
   ```` 
-* VMWARE - Ignorar o aviso que o SSH esta ativo no host. <h6>Fonte:  https://kb.vmware.com/s/article/2003637</h6>
+* VMWARE - Ignorar o aviso que o SSH esta ativo no host. 
+   <h6>Fonte: https://kb.vmware.com/s/article/2003637 </h6>
+   
   ```` 
   vim-cmd hostsvc/advopt/update UserVars.SuppressShellWarning long 1
   ```` 
@@ -138,6 +140,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   ```` 
 * VMWARE -  Ligar maquinas via CLI
   <h6> Fonte: http://buildvirtual.net/troubleshooting-esxi-vlan-configurations-using-command-line-tools/ </h6>
+  
   ```` 
   # retonar a lista de maquinas com seu ID 
   vim-cmd vmsvc/getallvms
@@ -307,6 +310,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   ````
 * FGT - FSSO - Limpar Cache e aplicação DNS
   <h6> http://kb.fortinet.com/kb/viewContent.do?externalId=FD30618 </h6> 
+  
   ````
   diag test application dnsproxy 1
   diag test application dnsproxy ? # ver outros niveis de teste
