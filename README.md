@@ -9,6 +9,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
 [Linux](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#Linux)  <br>
 [VMWARE](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#VMWARE) <br> 
 [MACOS](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#MACOS) <br> 
+[Fortinet](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#Fortinet) <br> 
 
 <hr>
 
@@ -190,10 +191,46 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
  # para remover da lista
  diagnose firewall ip_host rem  src|dst  <ipv4 addr>
  ````
+ * FGT - Status do HA e reiniciar 1 menbro do cluser
+  ````
+  get system ha status
+  Master:255 FGT01 FGT80Cxxxxxxxxxx 0
+  Slave :128 FGT02 FGT80Cxxxxxxxxxx 1
+  execute ha manage x
+  execute reboot
+  ````
+ * FGT - Forçar,  verificar e "debbugar" atualização na Fortiguard
+  ````
+  diag deb reset
+  diag deb app update -1
+  diag deb enable
+  execute update-now
+  # Desligar debug 
+  diag deb dis
+  diag deb reset
+  ````
+* FGT - Status da "caixa" e do Cluster HA
+  ````
+  get system status
+  diagnose sys ha status
+  di sys ha cluster-csum
+  ````
+* FGT - CPU e Memoria monitoramento
+  ````
+  diagnose sys top
+  # diag sys kill 11 - matar o vilão 
+  # ficar de olho: guacd e wad sao vilões de memoria
 
+  diagnose sys top-summary
+  # Press "m" to sort by memory
+  # Press "c" to sort by cpu
 
-
-
+* FGT - Ler log do ultimo crash no equipamento
+  ````
+  diagnose debug crashlog read
+  ````
+ 
+ 
 
 <h6>
 Obs.: Maioria destes comandos foram utilizados para resolver problemas pontuais, a alguns são de muito, muito tempo atrás, não possuem nenhuma "boniteza" e organização nos mesmos. São mais como notas para não esquecimento :D 
