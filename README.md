@@ -311,8 +311,6 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   diag test application dnsproxy ? # ver outros niveis de teste
   ````
 
- 
- 
 
 <h6>
 Obs.: Maioria destes comandos foram utilizados para resolver problemas pontuais, a alguns são de muito, muito tempo atrás, não possuem nenhuma "boniteza" e organização nos mesmos. São mais como notas para não esquecimento :D 
