@@ -63,8 +63,8 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   | ss \( sport = :http or sport = :https \) | lista todas as conexão com porta origem 80 OU 443 |   
   | s -o state fin-wait-1 \( sport = :http or sport = :https \) dst <IP> | lista todas as conexão com porta origem 80 OU 443, do statdo fin-wait-1 e com destino <IP> |  
 
-
 <hr>
+
 ## VMWARE 
 
 * VMWARE - Troca da senha de root do HOST VMWare ESXi via VCenter
@@ -110,7 +110,9 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   ```` 
   reclain area disk  fstrim -v /test
   ```` 
+
 <hr>
+
 ## MACOS 
 
 * MACOS - Limpar backups antigos TimeMachine
@@ -152,8 +154,42 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   brew doctor 
   brew update
   ````
+* MACOS - Screen - Utilizando Cabo Console 
+  ````
+  screen /dev/tty.usbserial  9600
+  
+  # control-A H - loga toda a saida de comando
+  # control-A h - tira print tela texto
+  # alias screen='screen /dev/tty.usbserial 9600' - alias para economizar digitação :D 
+  ````
 
+<hr>
 
+## Fortinet 
+  
+ * FGT - Reinicia a tabela de roteamento
+  ````
+  diagnose firewall iprope flush
+  ````
+ * FGT - Reinicia o status do HA
+  ````
+  diag sys ha reset-uptime
+  ````
+ * FGT - Desabilitar SumerTime / Horario de Verão
+  ````
+  config system global
+    set dst disable
+  end
+  ````
+ * FGT - Lista de IPs/Usuarios Bloqueados 
+  ````
+ # usuarios
+ get user ban list
+ # por hosts
+ diagnose firewall ip_host list
+ # para remover da lista
+ diagnose firewall ip_host rem  src|dst  <ipv4 addr>
+ ````
 
 
 
