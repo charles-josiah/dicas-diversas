@@ -72,6 +72,10 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   | ss \( sport = :http or sport = :https \) | lista todas as conexão com porta origem 80 OU 443 |   
   | s -o state fin-wait-1 \( sport = :http or sport = :https \) dst <IP> | lista todas as conexão com porta origem 80 OU 443, do statdo fin-wait-1 e com destino <IP> |  
 
+* Linux - debian 9 - rc.local
+  - https://www.itechlounge.net/2017/10/linux-how-to-add-rc-local-in-debian-9/
+  - https://ritsch.io/2017/08/02/execute-script-at-linux-startup.html
+
 <hr>
 
 ## VMWARE 
@@ -267,7 +271,21 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
       end
   end
   ````
+* FGT - FSSO - debugs
+  ````
+  diag deb authd fsso <comands>
+  diagnose firewall auth  list
 
+  # para regras já existentes, bug que precisa ativar o fsso na mão, set fsso enable 
+  ````
+* FGT - FSSO - Limpar Cache e aplicação DNS
+<h6> http://kb.fortinet.com/kb/viewContent.do?externalId=FD30618 </h6> 
+  ````
+  diag test application dnsproxy 1
+  diag test application dnsproxy ? # ver outros niveis de teste
+  ````
+
+ 
  
 
 <h6>
