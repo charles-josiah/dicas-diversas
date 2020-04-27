@@ -18,11 +18,19 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   ````
   for a in `zmprov gadl `; do echo "lista: $a" ; zmprov  gdl $a  | grep zimbraMailForwardingAddress | cut -f2 -d " "; echo "-----";  done 
   ````
-
+  
 <hr>
 
 ## Linux
 
+* LINUX - RSYNC - Verifica os diretorios no arquivo smb.conf e realiza o sincronismo para outro diretorio.
+  ````
+  for a in `cat /etc/samba/smb.conf | grep path | grep -v logon | awk '{ print $3} '`; do rsync -Cravzp --progress $a /mnt/backup/ ; done
+  ````
+* LINUX - RSYNC - Exemplo basico :D  
+  ````
+  rsync -a -e "ssh -i ~/Acessos/Chave/id_chave_MT" --rsync-path="sudo rsync"  charles.a@189.8.202.54:/vagrant ./
+  ````
 * LINUX - Ping Multicast em IPv6 - envia uma solicitação de ICMPv6  de 'echo request (type 128)' para 'all-nodes' no endereço multicast. Para ver a vizinhança depois, ip neighbor.
   ````
   ping6 -I <interface> ff02::1
@@ -111,7 +119,17 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   ```` 
   reclain area disk  fstrim -v /test
   ```` 
-
+* VMWARE - Ignorar o aviso que o SSH esta ativo no host. <h6>Fonte:  https://kb.vmware.com/s/article/2003637</h6>
+  ```` 
+  vim-cmd hostsvc/advopt/update UserVars.SuppressShellWarning long 1
+  ```` 
+* VMWARE - Adicionar  Vmware no AD via cli 
+  ```` 
+  root@srvvcenter01 [ ~ ]# /opt/likewise/bin/domainjoin-cli join  dominio.local usuario
+  Joining to AD Domain:   dominio.local
+  With Computer DNS Name: srvvcenter01.dominio.local
+  ```` 
+  
 <hr>
 
 ## MACOS 
@@ -228,7 +246,28 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   ````
   diagnose debug crashlog read
   ````
- 
+* FGT - Fortinet Criptografia Alta  
+  ````
+  config system global
+     set strong-crypto enable
+     set admin-https-ssl-versions tlsv1-2
+  end
+
+  config firewall ssl setting
+      set ssl-dh-bits 2048
+  end
+
+  config vpn ssl settings
+  set sslv3 disable
+      set tlsv1-0 disable
+      set tlsv1-1 disable
+      set algorithm high
+      edit 1
+           set cipher high
+      end
+  end
+  ````
+
  
 
 <h6>
