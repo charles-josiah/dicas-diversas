@@ -137,7 +137,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   With Computer DNS Name: srvvcenter01.dominio.local
   ```` 
 * VMWARE -  Ligar maquinas via CLI
-  <h6>Fonte: http://buildvirtual.net/troubleshooting-esxi-vlan-configurations-using-command-line-tools/ </h6>
+  <h6>Fonte: http://buildvirtual.net/troubleshooting-esxi-vlan-configurations-using-command-line-tools/ </h6><br>
   ```` 
   # retonar a lista de maquinas com seu ID 
   vim-cmd vmsvc/getallvms
