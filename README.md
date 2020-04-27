@@ -11,13 +11,13 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
 [MACOS](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#MACOS) <br> 
 
 <hr>
-
 ## Zimbra
 * ZIMBRA - Gerar lista com as "Listas de Distribuição" e seus integrantes:
   ````
   for a in `zmprov gadl `; do echo "lista: $a" ; zmprov  gdl $a  | grep zimbraMailForwardingAddress | cut -f2 -d " "; echo "-----";  done 
   ````
 
+<hr>
 ## Linux
 
 * LINUX - Ping Multicast em IPv6 - envia uma solicitação de ICMPv6  de 'echo request (type 128)' para 'all-nodes' no endereço multicast. Para ver a vizinhança depois, ip neighbor.
@@ -60,7 +60,9 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   | ss  state connected sport = :http | lista todas as conexão com porta origem 80 | 
   | ss \( sport = :http or sport = :https \) | lista todas as conexão com porta origem 80 OU 443 |   
   | s -o state fin-wait-1 \( sport = :http or sport = :https \) dst <IP> | lista todas as conexão com porta origem 80 OU 443, do statdo fin-wait-1 e com destino <IP> |  
- 
+
+
+<hr>
 ## VMWARE 
 
 * VMWARE - Troca da senha de root do HOST VMWare ESXi via VCenter
@@ -106,7 +108,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   ```` 
   reclain area disk  fstrim -v /test
   ```` 
-
+<hr>
 ## MACOS 
 
 * MACOS - Limpar backups antigos TimeMachine
@@ -136,6 +138,18 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   https://rakhesh.com/powershell/vpn-client-over-riding-dns-on-macos/
 
   ```` 
+* MACOS - Trocar Hostname
+  ````
+  sudo scutil --set ComputerName "charles.a"
+  sudo scutil --set LocalHostName "charles.a"
+  sudo scutil --set HostName "charles.a"
+  ````
+* MACOS - Brew Link
+  ````
+  sudo chown -R $(whoami):admin /usr/local  
+  brew doctor 
+  brew update
+  ````
 
 
 
