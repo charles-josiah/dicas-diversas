@@ -11,6 +11,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
 [MACOS](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#MACOS) <br> 
 
 <hr>
+
 ## Zimbra
 * ZIMBRA - Gerar lista com as "Listas de Distribuição" e seus integrantes:
   ````
@@ -18,6 +19,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   ````
 
 <hr>
+
 ## Linux
 
 * LINUX - Ping Multicast em IPv6 - envia uma solicitação de ICMPv6  de 'echo request (type 128)' para 'all-nodes' no endereço multicast. Para ver a vizinhança depois, ip neighbor.
