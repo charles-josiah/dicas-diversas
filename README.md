@@ -108,6 +108,29 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   } 
 
   ````
+  
+* VMWARE - Mostrar a data de instalação de um HOST Vmware ESXi via VCenter
+  - Fonte: https://communities.vmware.com/thread/558662
+  ````
+  # Inicie um powercli, pode ser via docker: 
+  docker pull vmware/powerclicore
+  docker run --rm -it vmware/powerclicore
+   
+  Set-PowerCLIConfiguration -InvalidCertificateAction:Ignore
+  Connect-VIServer -Server <IP_VCENTER> -User <ADMINISRADOR_TOP>  -Password <SENHA_ADMIN_TOP>
+  $vmhosts = Get-VMHost 
+
+  Get-VMHost  | %{
+    $thisUUID = (Get-EsxCli -VMHost $_.name).system.uuid.get()
+    $decDate = [Convert]::ToInt32($thisUUID.Split("-")[0], 16)
+    $installDate = [timezone]::CurrentTimeZone.ToLocalTime(([datetime]'1/1/1970').AddSeconds($decDate))
+    [pscustomobject][ordered]@{
+    Name="$($_.name)"
+    InstallDate=$installDate
+   } # end custom object
+  } # end host loop
+
+  ````
 * VMWARE - Boas praticas de configuração de LUN/Controladora ISCSI no VMWare e Compelent SCv2020
   - Fonte: https://downloads.dell.com/manuals/common/sc-series-vmware-vsphere-best-practices_en-us.pdf
   ````
