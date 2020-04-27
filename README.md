@@ -1,7 +1,9 @@
 # Dicas diversas 
 Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros.... 
 
-***TOPICOS***
+<hr> 
+  
+**TOPICOS**
 
 [Zimbra](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#Zimbra) <br>
 [Linux](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#Linux)  <br>
