@@ -23,6 +23,10 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
 
 ## Linux
 
+* LINUX - systemctl - mostrar serviços ativos
+  ````
+  systemctl list-unit-files | grep enabled
+  ````
 * LINUX - RSYNC - Verifica os diretorios no arquivo smb.conf e realiza o sincronismo para outro diretorio.
   ````
   for a in `cat /etc/samba/smb.conf | grep path | grep -v logon | awk '{ print $3} '`; do rsync -Cravzp --progress $a /mnt/backup/ ; done
