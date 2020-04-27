@@ -85,8 +85,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
 ## VMWARE 
 
 * VMWARE - Troca da senha de root do HOST VMWare ESXi via VCenter
-  <h6>Fonte: https://www.linkedin.com/pulse/reset-esxi-root-password-through-vcenter-esxcli-method-buschhaus/</h6>
-  
+  - Fonte: https://www.linkedin.com/pulse/reset-esxi-root-password-through-vcenter-esxcli-method-buschhaus/
   ````
   # Inicie um powercli, pode ser via docker: 
   docker pull vmware/powerclicore
@@ -110,8 +109,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
 
   ````
 * VMWARE - Boas praticas de configuração de LUN/Controladora ISCSI no VMWare e Compelent SCv2020
-  <h6>Fonte: https://downloads.dell.com/manuals/common/sc-series-vmware-vsphere-best-practices_en-us.pdf </h6>
-
+  - Fonte: https://downloads.dell.com/manuals/common/sc-series-vmware-vsphere-best-practices_en-us.pdf
   ````
   esxcli system module parameters set -p issue_scsi_cmd_to_bringup_drive=0 -m lsi_msgpt3
 
@@ -127,8 +125,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   reclain area disk  fstrim -v /test
   ```` 
 * VMWARE - Ignorar o aviso que o SSH esta ativo no host. 
-   <h6>Fonte: https://kb.vmware.com/s/article/2003637 </h6>
-   
+  - Fonte: https://kb.vmware.com/s/article/2003637
   ```` 
   vim-cmd hostsvc/advopt/update UserVars.SuppressShellWarning long 1
   ```` 
@@ -139,8 +136,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   With Computer DNS Name: srvvcenter01.dominio.local
   ```` 
 * VMWARE -  Ligar maquinas via CLI
-  <h6> Fonte: http://buildvirtual.net/troubleshooting-esxi-vlan-configurations-using-command-line-tools/ </h6>
-  
+  - Fonte: http://buildvirtual.net/troubleshooting-esxi-vlan-configurations-using-command-line-tools/
   ```` 
   # retonar a lista de maquinas com seu ID 
   vim-cmd vmsvc/getallvms
@@ -227,7 +223,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   end
   ````
 * FGT - DEBUG - VPN Autenticação com AD
-  <h6>Fonte: https://forum.fortinet.com/tm.aspx?m=156688 </h6>
+  - Fonte: https://forum.fortinet.com/tm.aspx?m=156688
   ````
   diagnose debug reset
   diagnose debug app ike -1
