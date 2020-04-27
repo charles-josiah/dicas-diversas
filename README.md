@@ -168,30 +168,30 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
 
 ## Fortinet 
   
- * FGT - Reinicia a tabela de roteamento
+* FGT - Reinicia a tabela de roteamento
   ````
   diagnose firewall iprope flush
   ````
- * FGT - Reinicia o status do HA
+* FGT - Reinicia o status do HA
   ````
   diag sys ha reset-uptime
   ````
- * FGT - Desabilitar SumerTime / Horario de Verão
+* FGT - Desabilitar SumerTime / Horario de Verão
   ````
   config system global
     set dst disable
   end
   ````
- * FGT - Lista de IPs/Usuarios Bloqueados 
+* FGT - Lista de IPs/Usuarios Bloqueados 
   ````
- # usuarios
- get user ban list
- # por hosts
- diagnose firewall ip_host list
- # para remover da lista
- diagnose firewall ip_host rem  src|dst  <ipv4 addr>
- ````
- * FGT - Status do HA e reiniciar 1 menbro do cluser
+  # usuarios
+  get user ban list
+  # por hosts
+  diagnose firewall ip_host list
+  # para remover da lista
+  diagnose firewall ip_host rem  src|dst  <ipv4 addr>
+  ````
+* FGT - Status do HA e reiniciar 1 menbro do cluser
   ````
   get system ha status
   Master:255 FGT01 FGT80Cxxxxxxxxxx 0
@@ -199,7 +199,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   execute ha manage x
   execute reboot
   ````
- * FGT - Forçar,  verificar e "debbugar" atualização na Fortiguard
+* FGT - Forçar,  verificar e "debbugar" atualização na Fortiguard
   ````
   diag deb reset
   diag deb app update -1
@@ -224,7 +224,6 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   diagnose sys top-summary
   # Press "m" to sort by memory
   # Press "c" to sort by cpu
-
 * FGT - Ler log do ultimo crash no equipamento
   ````
   diagnose debug crashlog read
