@@ -122,7 +122,6 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   esxcli iscsi adapter param set -A=vmhba64 -k=LoginTimeout -v=5
   esxcli system module parameters set -m iscsi_vmk -p iscsivmk_LunQDepth=255
   ```` 
- 
 * VMWARE - LINUX - RedHAT / Centos 6 - Disk Reclain
   ```` 
   reclain area disk  fstrim -v /test
@@ -202,11 +201,23 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   ````
   diag sys ha reset-uptime
   ````
+* FGT - Limpar tabela ARP
+  ````
+  execute clear system arp table 
+  ````
 * FGT - Desabilitar SumerTime / Horario de Verão
   ````
   config system global
     set dst disable
   end
+  ````
+* FGT - DEBUG - VPN Autenticação com AD
+  <h6>Fonte: https://forum.fortinet.com/tm.aspx?m=156688 </h6>
+  ````
+  diagnose debug reset
+  diagnose debug app ike -1
+  diagnose debug app fnb -1
+  diagnose debug enable
   ````
 * FGT - Lista de IPs/Usuarios Bloqueados 
   ````
