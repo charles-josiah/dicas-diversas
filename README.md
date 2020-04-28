@@ -170,7 +170,23 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   # Ligar a maquina
   vim-cmd vmsvc/power.on <vmid>
   ```` 
+* VMWARE -  Desbloqueando usuario depois de inumeras vezes a esnha errada 
+  ```` 
+  Procedure to unlock the ESXi host account at the console
+  At the console press CTRL+ALT+F2 to get to the ESXi shell. If a login shows up continue with step 3, otherwise continue with step 2.
+  Login to the DCUI (to enable the ESXi Shell if not already done)
+  Login with root and the correct password.
+  Go to Troubleshooting Options
+  Select Enable ESXi Shell
+  Press CTRL+ALT+F1
+  At the ESXi shell login with root and the password
+  Run the following commands to show number of failed attempts:
 
+  pam_tally2 --user root
+  Run the following command to unlock the root account:
+
+  pam_tally2 --user root --reset
+  ```` 
 <hr>
 
 ## MACOS 
@@ -333,7 +349,12 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   diag test application dnsproxy 1
   diag test application dnsproxy ? # ver outros niveis de teste
   ````
-
+* FGT - Falha na comunicação com DNS Filter Servers INDIPONIVEIS 
+  ````
+  config system fortiguard
+  set sdns-server-ip 45.75.200.89
+  end
+  ````
 
 <h6>
 Obs.: Maioria destes comandos foram utilizados para resolver problemas pontuais, a alguns são de muito, muito tempo atrás, não possuem nenhuma "boniteza" e organização nos mesmos. São mais como notas para não esquecimento :D 
