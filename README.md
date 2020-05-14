@@ -145,15 +145,13 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   ```` 
 * VMWARE - Troca do driver da placa de rede Broadcom no VMWARE 6.x - Problema de Latencia extrema e perda de pacotes na rede LAN e SAN
   ```` 
-   esxcfg-nics -l          #exibe os drivers que estão sendo utilizados
-   esxcfg-module -d ntg3   #desabilita o driver ntg3
-   esxcfg-module -e tg3    #habilita o driver tg3
-   init 6 
+   esxcli system maintenanceMode set –enable true  #procedimento deve ser realizado em modo manutenção.             
+   esxcfg-nics -l                                  #exibe os drivers que estão sendo utilizados
+   esxcfg-module -d ntg3                           #desabilita o driver ntg3
+   esxcfg-module -e tg3                            #habilita o driver tg3
+   init 6                                          #reboot
+   esxcli system maintenanceMode set --enable false  #sair do modo manutenção     
    ```` 
-  
-  
-
-
 * VMWARE - LINUX - RedHAT / Centos 6 - Disk Reclain
   ```` 
   reclain area disk  fstrim -v /test
