@@ -152,6 +152,27 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
    init 6                                          #reboot
    esxcli system maintenanceMode set --enable false  #sair do modo manutenção     
    ```` 
+* VMWARE - Para melhorar performace rede SAN ISCSI desabilitando "delayed ack"
+  - Fonte: https://kb.vmware.com/s/article/1002598
+  - script1: http://blog.gptnet.net/?p=421
+  - script2: https://tech.zsoldier.com/2011/09/disable-delayed-acknowledgement-setting.html
+  `````
+  #This section will get host information needed
+  $HostView = Get-VMHost NameofESXServer | Get-View
+  $HostStorageSystemID = $HostView.configmanager.StorageSystem
+  $HostiSCSISoftwareAdapterHBAID = ($HostView.config.storagedevice.HostBusAdapter | where {$_.Model -match "iSCSI Software"}).device
+
+  #This section sets the option you want.
+  $options = New-Object VMWare.Vim.HostInternetScsiHbaParamValue[] (1)
+
+  $options[0] = New-Object VMware.Vim.HostInternetScsiHbaParamValue
+  $options[0].key = "DelayedAck"
+  $options[0].value = $false
+
+  #This section applies the options above to the host you got the information from.
+  $HostStorageSystem = Get-View -ID $HostStorageSystemID
+  $HostStorageSystem.UpdateInternetScsiAdvancedOptions($HostiSCSISoftwareAdapterHBAID, $null, $options)
+  ```` 
 * VMWARE - LINUX - RedHAT / Centos 6 - Disk Reclain
   ```` 
   reclain area disk  fstrim -v /test
