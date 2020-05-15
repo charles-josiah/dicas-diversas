@@ -80,8 +80,12 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   - https://www.itechlounge.net/2017/10/linux-how-to-add-rc-local-in-debian-9/
   - https://ritsch.io/2017/08/02/execute-script-at-linux-startup.html
 
+* Linux - Centos 7 - 100% CPU yumBackend.py
+  ````
+  systemctl stop packagekit-offline-update.service
+  systemctl disable packagekit-offline-update.service
+  ````
 <hr>
-
 ## VMWARE 
 
 * VMWARE - Troca da senha de root do HOST VMWare ESXi via VCenter
