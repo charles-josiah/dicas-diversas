@@ -23,6 +23,12 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
 
 ## Linux
 
+* LINUX - operações com SED inline
+  ````
+  sed -i.bkp   '1,/\ \ user:..*/s/\ \ user:..*/  user: charles.a/' *.yaml     #encontra o primeiro "match" e realiza a substituição
+  sed -i.bkp-hosts   "s/\-\ \hosts:..*/\-\ hosts: all/g" *.yaml               #encontra todos os "hosts" e altera para all
+  ````
+
 * LINUX - systemctl - mostrar serviços ativos
   ````
   systemctl list-unit-files | grep enabled
