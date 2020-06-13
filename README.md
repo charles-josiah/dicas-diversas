@@ -91,6 +91,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   systemctl stop packagekit-offline-update.service
   systemctl disable packagekit-offline-update.service
   ````
+ 
 <hr>
 ## VMWARE 
 
@@ -153,9 +154,6 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   get-vm | where {$_.powerstate -ne "PoweredOff" } | where {$_.Guest.ToolsVersionStatus -ne "guestToolsCurrent"} | % { get-view $_.id } | select Name, @{ Name="ToolsVersion"; Expression={$_.config.tools.toolsVersion}}, @{ Name="ToolStatus"; Expression={$_.Guest.ToolsVersionStatus}} | Export-Csv -NoTypeInformation -UseCulture -Path /tmp/VMHWandToolsInfo.csv
   
   ````
-  
-
-
 
 * VMWARE - Troca da senha de root do HOST VMWare ESXi via VCenter
   - Fonte: https://www.linkedin.com/pulse/reset-esxi-root-password-through-vcenter-esxcli-method-buschhaus/
