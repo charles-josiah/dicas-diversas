@@ -98,8 +98,8 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
 
 * VMWARE - Disco e arquivos orfaos //  Orphaned files and folders // Zombie Files
   - Fonte: https://www.lucd.info/2016/09/13/orphaned-files-revisited/
-           https://virtualfrog.wordpress.com/2017/07/25/powercli-find-zombie-files-on-datastores/
-           https://communities.vmware.com/thread/553595
+  - Fonte: https://virtualfrog.wordpress.com/2017/07/25/powercli-find-zombie-files-on-datastores/
+  - Fonte: https://communities.vmware.com/thread/553595
   ````
   # salve o script desejado, no meu caso mosta_odata.ps1, em um diretorio e inicie como volume do docker
   
