@@ -93,6 +93,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   ````
  
 <hr>
+
 ## VMWARE 
 
 * VMWARE - Disco e arquivos orfaos //  Orphaned files and folders // Zombie Files
