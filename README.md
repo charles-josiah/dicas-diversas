@@ -94,6 +94,69 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
 <hr>
 ## VMWARE 
 
+* VMWARE - Disco e arquivos orfaos //  Orphaned files and folders // Zombie Files
+  - Fonte: https://www.lucd.info/2016/09/13/orphaned-files-revisited/
+           https://virtualfrog.wordpress.com/2017/07/25/powercli-find-zombie-files-on-datastores/
+           https://communities.vmware.com/thread/553595
+  ````
+  # salve o script desejado, no meu caso mosta_odata.ps1, em um diretorio e inicie como volume do docker
+  
+  Inicie um powercli, pode ser via docker: 
+  docker pull vmware/powerclicore
+  docker run --rm -v /root/scripts/:/tmp -it vmware/powerclicore 
+  
+  #carrege o script com a função
+  PS /tmp> . ./mosta_odata.ps1
+  
+  #conectando no vcenter
+  PS /tmp> Set-PowerCLIConfiguration -InvalidCertificateAction:Ignore
+  PS /tmp> Connect-VIServer -Server <IP_VCENTER> -User <ADMINISRADOR_TOP>  -Password <SENHA_ADMIN_TOP>
+  PS /tmp> Get-Cluster -Name "NOME_DO_CLUSTER_HA"
+  #
+  #
+  PS /tmp> 
+  PS /tmp> Get-Cluster -Name HANANERY-Cluster | get-datastore | Get-VmwOrphan
+  PS /tmp> 
+  #
+  #
+  #para saida no formato xls
+  #requer: PS /tmp> Install-Module -Name ImportExcel
+           PS /tmp> Update-Module -Name ImportExcel  
+           root@debian:~/scripts# apt-get -y update && apt-get install -y --no-install-recommends libgdiplus libc6-dev         
+           
+  PS /tmp> $reportName = './discos.xls'
+  PS /tmp> foreach($ds in (Get-Cluster -Name MyCluster | Get-Datastore | Get-VmwOrphan | Group-Object -Property {$_.Folder.Split(']')[0].TrimStart('[')})){$ds.Group | Export-Excel -Path $reportName -WorkSheetname $ds.Name -AutoSize -AutoFilter -FreezeTopRow }
+  PS /tmp> 
+  PS /tmp>
+  ````
+  
+* VMWARE - Ver status vmware-tools no ambiente, se instalado/à instalar e eatualizar.
+  - Fonte: http://blog.jgriffiths.org/powercli-how-to-get-vmware-tools-version/
+  ````
+  # Inicie um powercli, pode ser via docker: 
+  docker pull vmware/powerclicore
+  docker run --rm -it vmware/powerclicore
+
+  Set-PowerCLIConfiguration -InvalidCertificateAction:Ignore
+  Connect-VIServer -Server <IP_VCENTER> -User <ADMINISRADOR_TOP>  -Password <SENHA_ADMIN_TOP>
+  
+  #status do vmwware-tools de todas as maquinas no ambiente
+  get-vm | % { get-view $_.id } | select Name, @{ Name="ToolsVersion"; Expression={$_.config.tools.toolsVersion}},@{ Name="ToolStatus"; Expression={$_.Guest.ToolsVersionStatus}}
+  
+  #status do vmware-tools de cada maquina ligada.
+  get-vm | where {$_.powerstate -ne "PoweredOff" } | % { get-view $_.id } | select Name, @{ Name="ToolsVersion"; Expression={$_.config.tools.toolsVersion}},@{ Name="ToolStatus"; Expression={$_.Guest.ToolsVersionStatus}}
+  
+  #status do vmware-tools que não esta atualizado da maquinas ligadas
+  get-vm | where {$_.powerstate -ne "PoweredOff" } | where {$_.Guest.ToolsVersionStatus -ne "guestToolsCurrent"} | % { get-view $_.id } | select Name, @{ Name="ToolsVersion"; Expression={$_.config.tools.toolsVersion}}, @{ Name="ToolStatus"; Expression={$_.Guest.ToolsVersionStatus}}
+
+  #status do vmware-tools das maquinas ligadas e não atualizadas com saida para um arquivo csv.
+  get-vm | where {$_.powerstate -ne "PoweredOff" } | where {$_.Guest.ToolsVersionStatus -ne "guestToolsCurrent"} | % { get-view $_.id } | select Name, @{ Name="ToolsVersion"; Expression={$_.config.tools.toolsVersion}}, @{ Name="ToolStatus"; Expression={$_.Guest.ToolsVersionStatus}} | Export-Csv -NoTypeInformation -UseCulture -Path /tmp/VMHWandToolsInfo.csv
+  
+  ````
+  
+
+
+
 * VMWARE - Troca da senha de root do HOST VMWare ESXi via VCenter
   - Fonte: https://www.linkedin.com/pulse/reset-esxi-root-password-through-vcenter-esxcli-method-buschhaus/
   ````
