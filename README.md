@@ -117,7 +117,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   #
   #
   PS /tmp> 
-  PS /tmp> Get-Cluster -Name HANANERY-Cluster | get-datastore | Get-VmwOrphan
+  PS /tmp> Get-Cluster -Name NOME-Cluster | get-datastore | Get-VmwOrphan
   PS /tmp> 
   #
   #
@@ -132,7 +132,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   PS /tmp>
   ````
   
-* VMWARE - Ver status vmware-tools no ambiente, se instalado/à instalar e eatualizar.
+* VMWARE - Ver status vmware-tools no ambiente, se instalado/à instalar e e atualizar.
   - Fonte: http://blog.jgriffiths.org/powercli-how-to-get-vmware-tools-version/
   ````
   # Inicie um powercli, pode ser via docker: 
@@ -272,7 +272,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   # Ligar a maquina
   vim-cmd vmsvc/power.on <vmid>
   ```` 
-* VMWARE -  Desbloqueando usuario depois de inumeras vezes a esnha errada 
+* VMWARE -  Desbloqueando usuario depois de inumeras vezes a senha errada 
   ```` 
   Procedure to unlock the ESXi host account at the console
   At the console press CTRL+ALT+F2 to get to the ESXi shell. If a login shows up continue with step 3, otherwise continue with step 2.
@@ -288,6 +288,16 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   Run the following command to unlock the root account:
 
   pam_tally2 --user root --reset
+  ```` 
+* VMWARE - Lista ISO "atachadas" nas maquinas virtuais
+  ```` 
+  Set-PowerCLIConfiguration -InvalidCertificateAction:Ignore
+  Connect-VIServer -Server <IP_VCENTER> -User <ADMINISRADOR_TOP>  -Password <SENHA_ADMIN_TOP>
+  
+  PS /root> $VMs = Get-VM
+  PS /root> $Output = foreach ($VM in $VMs){ Get-CDDrive $VM | select Parent, IsoPath }
+  PS /root> echo $Output                  #exibir na tela
+  PS /root> $Output | Export-Csv          #mandar para csv
   ```` 
 <hr>
 
