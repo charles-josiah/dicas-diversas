@@ -22,19 +22,16 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   ````
   zmmailbox -z -m <usuario@domino> gaf | more
   ````
-* ZIMBRA - Mostrar contador <b>aproximado</b> de mensagem total da caixa de um usuario. <b<Aproximado</b> porque, soma shared-folders e outros itens junto, precisa melhorar o filtro para somar somente mensagens.
+* ZIMBRA - Mostrar contador <b>aproximado</b> de mensagem total da caixa de um usuario. <b>Aproximado</b> porque, soma shared-folders e outros itens junto, precisa melhorar o filtro para somar somente mensagens.
   ````
   total=0; for a in `zmmailbox -z -m  gaf <usuario@domino> | egrep "mess|unkn" | grep -vi contac  |  awk '{ print $4 }' | egrep -o "[0-9]+" ;`; do total=$(( total + a )); done; echo "$total"
   ````
 <hr>
-* ZIMBRA - Mostrar contador <b>aproximado</b> de mensagem total da caixa de um usuario. <b<Aproximado</b> porque, soma shared-folders e outros itens junto, precisa melhorar o filtro para somar somente mensagens. Porem adicionado para um dominio todo. 
+* ZIMBRA - Mostrar contador <b>aproximado</b> de mensagem total da caixa de um usuario. <b>Aproximado</b> porque, soma shared-folders e outros itens junto, precisa melhorar o filtro para somar somente mensagens. Porem adicionado para um dominio todo. 
   ````
   for b in `zmprov -l gaa | grep -v spam | grep -v ham | grep -v galsync | grep -v virus | grep <DOMINIO> | cut -d "@" -f1`; do total=0; for a in `zmmailbox -z -m  $b@b<DOMINO> gaf  |  egrep "mess|unkn"  | awk '{ print $4 }' | egrep -o "[0-9]+";`; do total=$(( total + a )); done; echo "$b;$total"; done 
   ````
 <hr>
-
-
-
 
 ## Linux
 
