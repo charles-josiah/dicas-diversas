@@ -91,7 +91,10 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   systemctl stop packagekit-offline-update.service
   systemctl disable packagekit-offline-update.service
   ````
- 
+* Linux - Teste de IOPS no linux
+  ````
+  fio --randrepeat=1 --ioengine=libaio --direct=1 --gtod_reduce=1 --name=test --filename=test --bs=4k --iodepth=64 --size=4G --readwrite=randrw --rwmixread=75
+  ````
 <hr>
 
 ## VMWARE 
