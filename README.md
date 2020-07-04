@@ -18,7 +18,14 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   ````
   for a in `zmprov gadl `; do echo "lista: $a" ; zmprov  gdl $a  | grep zimbraMailForwardingAddress | cut -f2 -d " "; echo "-----";  done 
   ````
-  
+* ZIMBRA - Mostrar as contador de mensagens e pastas de um usuario via CLI.
+  ````
+  zmmailbox -z -m <usuario@domino> gaf | more
+  ````
+* ZIMBRA - Mostrar contador <b>aproximado<b> de mensagem total da caixa de um usuario. <b<Aproximado</b< porque, soma shared-folders e outros itens junto, precisa melhorar o filtro para somar somente mensagens.
+  ````
+  total=0; for a in `zmmailbox -z -m  gaf <usuario@domino> | egrep "mess|unkn" | grep -vi contac  |  awk '{ print $4 }' | egrep -o "[0-9]+" ;`; do total=$(( total + a )); done; echo "$total"
+  ````
 <hr>
 
 ## Linux
