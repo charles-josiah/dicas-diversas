@@ -30,7 +30,13 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   ````
   for b in `zmprov -l gaa | grep -v spam | grep -v ham | grep -v galsync | grep -v virus | grep <DOMINIO> | cut -d "@" -f1`; do total=0; for a in `zmmailbox -z -m  $b@b<DOMINO> gaf  |  egrep "mess|unkn"  | awk '{ print $4 }' | egrep -o "[0-9]+";`; do total=$(( total + a )); done; echo "$b;$total"; done 
   ````
+* ZIMBRA - Erro de TLS quando inicia o servidor zimbra.
+  ````
+  <b> Unable to start TLS: hostname verification failed when connecting to ldap master.</b>
+  [zimbra@zimbra ssl]$ zmlocalconfig -e ldap_starttls_required=false
+  [zimbra@zimbra ssl]$ zmlocalconfig -e ldap_starttls_supported=0
 
+  ````
 <hr>
 
 ## Linux
