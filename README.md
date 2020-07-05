@@ -32,7 +32,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   ````
 * ZIMBRA - Erro de TLS quando inicia o servidor zimbra -  Unable to start TLS: .
   ````
-  <b> Unable to start TLS: hostname verification failed when connecting to ldap master.</b>
+  log: Unable to start TLS: hostname verification failed when connecting to ldap master.
   [zimbra@zimbra ssl]$ zmlocalconfig -e ldap_starttls_required=false
   [zimbra@zimbra ssl]$ zmlocalconfig -e ldap_starttls_supported=0
 
