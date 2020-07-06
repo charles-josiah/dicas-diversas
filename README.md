@@ -488,7 +488,14 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   set sdns-server-ip 45.75.200.89
   end
   ````
+* FGT - Forticloud falha de comunicação com o fortigate, não iniciando o tunel para gerenciamento. 
+  ````
+  LOG: Configuration of this device has not been initialized in FortiGate Cloud, please set Central Management to FortiGate Cloud from device and verify the management tunnel is up. And it may take a few seconds to initialize. 
 
+  config system central-management
+    set type fortiguard
+  end
+  ````
 <h6>
 Obs.: Maioria destes comandos foram utilizados para resolver problemas pontuais, a alguns são de muito, muito tempo atrás, não possuem nenhuma "boniteza" e organização nos mesmos. São mais como notas para não esquecimento :D 
 </h6>
