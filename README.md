@@ -39,10 +39,10 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   ````
 * ZIMBRA - Recuperar "encaminhador" de mensagens da conta do usuario e preparar a saida o comando, gerando um comando para reinserir em um outro zimbra . 
   ````
- for a in `zmprov -l gaa | grep <DOMINIO>`; do  echo -n "zmprov ma $a zimbraPrefMailForwardingAddress  \" `  zmprov  ga $a  | grep zimbraPrefMailForwardingAddress | sed s/\zimbraPrefMailForwardingAddress:// ` \"  "; echo; done
+  for a in `zmprov -l gaa | grep <DOMINIO>`; do  echo -n "zmprov ma $a zimbraPrefMailForwardingAddress  \" `  zmprov  ga $a  | grep zimbraPrefMailForwardingAddress | sed s/\zimbraPrefMailForwardingAddress:// ` \"  "; echo; done
   ````
-<hr>
 
+ <hr>
 ## Linux
 
 * LINUX - operações com SED inline
