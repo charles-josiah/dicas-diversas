@@ -43,6 +43,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   ````
 
  <hr>
+ 
 ## Linux
 
 * LINUX - operações com SED inline
