@@ -37,6 +37,10 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
   [zimbra@zimbra ssl]$ zmlocalconfig -e ldap_starttls_supported=0
 
   ````
+* ZIMBRA - Recuperar "encaminhador" de mensagens da conta do usuario e preparar a saida o comando, gerando um comando para reinserir em um outro zimbra . 
+  ````
+ for a in `zmprov -l gaa | grep <DOMINIO>`; do  echo -n "zmprov ma $a zimbraPrefMailForwardingAddress  \" `  zmprov  ga $a  | grep zimbraPrefMailForwardingAddress | sed s/\zimbraPrefMailForwardingAddress:// ` \"  "; echo; done
+  ````
 <hr>
 
 ## Linux
