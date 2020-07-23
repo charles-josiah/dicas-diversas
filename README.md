@@ -1,5 +1,5 @@
 # Dicas diversas 
-Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros.... 
+Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e outros.... 
 
 <hr> 
   
@@ -10,6 +10,8 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
 [VMWARE](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#VMWARE) <br> 
 [MACOS](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#MACOS) <br> 
 [Fortinet](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#Fortinet) <br> 
+[Zabbix](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#Zabbix) <br> 
+
 
 <hr>
 
@@ -501,6 +503,14 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE e outros...
     set type fortiguard
   end
   ````
+## Zabbix
+
+* Zbx -  “rascunho” de como usar a API do Zabbix com o curl do linux
+- Fonte: Maintenance [Zabbix Documentation 1.8] // host.get [Zabbix Documentation 5.0] // API [Zabbix Documentation 5.0] // Tutorial Zabbix API - Quickstart Guide [ Step by Step ]
+
+
+
+
 <h6>
 Obs.: Maioria destes comandos foram utilizados para resolver problemas pontuais, a alguns são de muito, muito tempo atrás, não possuem nenhuma "boniteza" e organização nos mesmos. São mais como notas para não esquecimento :D 
 </h6>
