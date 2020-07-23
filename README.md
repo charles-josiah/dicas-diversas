@@ -505,7 +505,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   ````
 ## Zabbix
 
-* ZBXbx -  “rascunho” basico de como usar a API do Zabbix com o curl do linux
+* ZBXbx -  “rascunho” basico de como usar a API do Zabbix com o curl do linux, objetivo de demonstrar o funcionamento.
   - Fonte: Maintenance [Zabbix Documentation 1.8] // host.get [Zabbix Documentation 5.0] // API [Zabbix Documentation 5.0] // Tutorial Zabbix API - Quickstart Guide [ Step by Step ]
   ````
   #Vou iniciar umas variaveis para facilitar a nossa vida :D (não é SH/BASH/KSH, as variaveis precisam ser substituidas manualmente)
@@ -515,7 +515,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
 
   #Login no zabbix e receber o KEY da conexão.
   
-   curl --insecure   -i -X POST -H 'Content-type:application/json' -d '{"jsonrpc":"2.0","method":"user.login","params":{ "user”:”$USER ,”password”:”$PASS” },”auth":null,"id":0}' https://$HOST
+  curl --insecure   -i -X POST -H 'Content-type:application/json' -d '{"jsonrpc":"2.0","method":"user.login","params":{ "user”:”$USER ,”password”:”$PASS” },”auth":null,"id":0}' https://$HOST
 
   HTTP/1.1 200 OK
   Date: Thu, 23 Jul 2020 13:00:29 GMT
@@ -547,7 +547,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
 
   #Retorna somente 1 maquina
 
-   curl --insecure   -i -X POST -H 'Content-type:application/json' -d '{"jsonrpc":"2.0","method":"host.get","params":{"filter": ["host", "teste"]},"auth":"05d129888aff2d54563772d32c6b8e04","id":0}' https://$HOST
+  curl --insecure   -i -X POST -H 'Content-type:application/json' -d '{"jsonrpc":"2.0","method":"host.get","params":{"filter": ["host", "teste"]},"auth":"05d129888aff2d54563772d32c6b8e04","id":0}' https://$HOST
   HTTP/1.1 200 OK
   Date: Thu, 23 Jul 2020 13:11:36 GMT
   Server: Apache/2.4.29
@@ -624,10 +624,6 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   Content-Type: application/json
 
   {"jsonrpc":"2.0","result":{"maintenanceids":["1"]},"id":3}
-
-
-
-
 
 
 <h6>
