@@ -43,7 +43,15 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   ````
   for a in `zmprov -l gaa | grep <DOMINIO>`; do  echo -n "zmprov ma $a zimbraPrefMailForwardingAddress  \" `  zmprov  ga $a  | grep zimbraPrefMailForwardingAddress | sed s/\zimbraPrefMailForwardingAddress:// ` \"  "; echo; done
   ````
-
+* ZIMBRA - Localizar uma mensagem via mysql e cli.
+    - Fonte: https://wiki.zimbra.com/wiki/Account_mailbox_database_structure
+  
+* ZIMBRA - Recuperar mensagem .msg via cli.
+    - Fonte: https://www.sv.net.br/zimbra-reimportar-arquivos-msg/
+  ````
+  zmmailbox -z -m  <email>  addMessage /<IMAP DIR>  1783-1607.msg   
+  
+  ````
  <hr>
  
 ## Linux
