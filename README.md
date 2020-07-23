@@ -505,7 +505,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   ````
 ## Zabbix
 
-* ZBXbx -  “rascunho” basico de como usar a API do Zabbix com o curl do linux, objetivo de demonstrar o funcionamento.
+* ZBX - “rascunho” basico de como usar a API do Zabbix com o curl do linux, objetivo de demonstrar o funcionamento.
   - Fonte: Maintenance [Zabbix Documentation 1.8] // host.get [Zabbix Documentation 5.0] // API [Zabbix Documentation 5.0] // Tutorial Zabbix API - Quickstart Guide [ Step by Step ]
   ````
   #Vou iniciar umas variaveis para facilitar a nossa vida :D (não é SH/BASH/KSH, as variaveis precisam ser substituidas manualmente)
@@ -609,9 +609,16 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   {"jsonrpc":"2.0","result":[{"hostid":"10372"}],"id":0}
 
 
-  #Criar janela de manutenção, e ativar manutenção no host.  Para data de inicio, é em segundo… então `date %s`  :D 
+  #Criar janela de manutenção, e ativar manutenção no host.  
+  #Para data de inicio, é em segundo… então `date %s` e o retorno somar mais o tempo desejado. :D 
+  #exemplo calculo do inicio e fim
+  $date +%s
+  1595524464 
+  $echo $((1595513595 + 3600))
+  1595517195
+  $
 
-  curl --insecure   -i -X POST -H 'Content-type:application/json' -d ' {"jsonrpc":"2.0", "method":"maintenance.create", "params":[{ "groupids":[], "hostids":["10425"], "name":"MANUTENCAO PROGRAMADA", "maintenance_type":"0", "description":"MANUTENCAO HOSTS XXXX", "active_since":"1595513595", "active_till":"1595517195", "timeperiods": [ { "timeperiod_type": 0, "start_date": "1595513995", "period": 600 } ] }], "auth":"05d129888aff2d54563772d32c6b8e04","id":3}' https://$HOST
+  curl --insecure   -i -X POST -H 'Content-type:application/json' -d ' {"jsonrpc":"2.0", "method":"maintenance.create", "params":[{ "groupids":[], "hostids":["10425"], "name":"MANUTENCAO PROGRAMADA", "maintenance_type":"0", "description":"MANUTENCAO HOSTS XXXX", "active_since":"1595524464", "active_till":"1595517195", "timeperiods": [ { "timeperiod_type": 0, "start_date": "1595524464", "period": 600 } ] }], "auth":"05d129888aff2d54563772d32c6b8e04","id":3}' https://$HOST
 
   HTTP/1.1 200 OK
   Date: Thu, 23 Jul 2020 14:15:15 GMT
