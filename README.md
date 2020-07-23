@@ -505,8 +505,127 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   ````
 ## Zabbix
 
-* Zbx -  “rascunho” de como usar a API do Zabbix com o curl do linux
-- Fonte: Maintenance [Zabbix Documentation 1.8] // host.get [Zabbix Documentation 5.0] // API [Zabbix Documentation 5.0] // Tutorial Zabbix API - Quickstart Guide [ Step by Step ]
+* ZBXbx -  “rascunho” basico de como usar a API do Zabbix com o curl do linux
+  - Fonte: Maintenance [Zabbix Documentation 1.8] // host.get [Zabbix Documentation 5.0] // API [Zabbix Documentation 5.0] // Tutorial Zabbix API - Quickstart Guide [ Step by Step ]
+  ````
+  #Vou iniciar umas variaveis para facilitar a nossa vida :D (não é SH/BASH/KSH, as variaveis precisam ser substituidas manualmente)
+  $HOST=<URLZABBIX>/api_jsonrpc.php 
+  $USER=zbx_api
+  $PASS=SDEDFRF
+
+  #Login no zabbix e receber o KEY da conexão.
+  
+   curl --insecure   -i -X POST -H 'Content-type:application/json' -d '{"jsonrpc":"2.0","method":"user.login","params":{ "user”:”$USER ,”password”:”$PASS” },”auth":null,"id":0}' https://$HOST
+
+  HTTP/1.1 200 OK
+  Date: Thu, 23 Jul 2020 13:00:29 GMT
+  Server: Apache/2.4.29
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Headers: Content-Type
+  Access-Control-Allow-Methods: POST
+  Access-Control-Max-Age: 1000
+  Content-Length: 68
+  Content-Type: application/json
+  
+  {"jsonrpc":"2.0","result":"05d129888aff2d54563772d32c6b8e04","id":0}
+
+  #Retorna todos os hosts do zabbix
+
+  curl --insecure   -i -X POST -H 'Content-type:application/json' -d '{"jsonrpc":"2.0","method":"host.get","params":{"output": ["hostid", "name"]},"auth":"05d129888aff2d54563772d32c6b8e04","id":0}' https://$HOST
+
+  HTTP/1.1 200 OK
+  Date: Thu, 23 Jul 2020 13:02:28 GMT
+  Server: Apache/2.4.29
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Headers: Content-Type
+  Access-Control-Allow-Methods: POST
+  Access-Control-Max-Age: 1000
+  Transfer-Encoding: chunked
+  Content-Type: application/json
+
+  {"jsonrpc":"2.0","result":[{"hostid":"10084","name":"Zabbix server"}, #e tudo mais que tiver no zabbix .......
+
+  #Retorna somente 1 maquina
+
+   curl --insecure   -i -X POST -H 'Content-type:application/json' -d '{"jsonrpc":"2.0","method":"host.get","params":{"filter": ["host", "teste"]},"auth":"05d129888aff2d54563772d32c6b8e04","id":0}' https://$HOST
+  HTTP/1.1 200 OK
+  Date: Thu, 23 Jul 2020 13:11:36 GMT
+  Server: Apache/2.4.29
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Headers: Content-Type
+  Access-Control-Allow-Methods: POST
+  Access-Control-Max-Age: 1000
+  Transfer-Encoding: chunked
+  Content-Type: application/json
+
+  {"jsonrpc":"2.0","result":[{"hostid":"10084","proxy_hostid":"0","host":"Zabbix server","status":"0","disable_unti
+
+  #Recuperar o host ID, nome do host no campo host do inventario
+
+  curl --insecure   -i -X POST -H 'Content-type:application/json' -d '{"jsonrpc":"2.0","method":"host.get","params":{"output": ["hostid"], "filter": { "host": "db01" }  },"auth":"05d129888aff2d54563772d32c6b8e04","id":0}' https://$HOST 
+
+  HTTP/1.1 200 OK
+  Date: Thu, 23 Jul 2020 13:38:22 GMT
+  Server: Apache/2.4.29
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Headers: Content-Type
+  Access-Control-Allow-Methods: POST
+  Access-Control-Max-Age: 1000
+  Content-Length: 54
+  Content-Type: application/json
+
+  {"jsonrpc":"2.0","result":[{"hostid":"10269"}],"id":0}
+
+  #Recuperar o host ID, nome do host no campo host do inventario
+
+  curl --insecure   -i -X POST -H 'Content-type:application/json' -d '{"jsonrpc":"2.0","method":"host.get","params":{"output": ["hostid"], "filter": { "host": "db01l" }  },"auth":"05d129888aff2d54563772d32c6b8e04","id":0}' https://$HOST
+
+  HTTP/1.1 200 OK
+  Date: Thu, 23 Jul 2020 13:38:22 GMT
+  Server: Apache/2.4.29
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Headers: Content-Type
+  Access-Control-Allow-Methods: POST
+  Access-Control-Max-Age: 1000
+  Content-Length: 54
+  Content-Type: application/json
+
+  {"jsonrpc":"2.0","result":[{"hostid":"10269"}],"id":0}
+  
+  #Recuperar o host ID, nome do "name" no campo host do inventario
+
+  curl --pe:application/json' -d '{"jsonrpc":"2.0","method":"host.get","params":{"output": ["hostid"], "filter": { "name": “SERVIDOR XXX” }  },"auth":"05d129888aff2d54563772d32c6b8e04","id":0}' https://$HOST
+
+  HTTP/1.1 200 OK
+  Date: Thu, 23 Jul 2020 13:59:10 GMT
+  Server: Apache/2.4.29
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Headers: Content-Type
+  Access-Control-Allow-Methods: POST
+  Access-Control-Max-Age: 1000
+  Content-Length: 54
+  Content-Type: application/json
+
+  {"jsonrpc":"2.0","result":[{"hostid":"10372"}],"id":0}
+
+
+  #Criar janela de manutenção, e ativar manutenção no host.  Para data de inicio, é em segundo… então `date %s`  :D 
+
+  curl --insecure   -i -X POST -H 'Content-type:application/json' -d ' {"jsonrpc":"2.0", "method":"maintenance.create", "params":[{ "groupids":[], "hostids":["10425"], "name":"MANUTENCAO PROGRAMADA", "maintenance_type":"0", "description":"MANUTENCAO HOSTS XXXX", "active_since":"1595513595", "active_till":"1595517195", "timeperiods": [ { "timeperiod_type": 0, "start_date": "1595513995", "period": 600 } ] }], "auth":"05d129888aff2d54563772d32c6b8e04","id":3}' https://$HOST
+
+  HTTP/1.1 200 OK
+  Date: Thu, 23 Jul 2020 14:15:15 GMT
+  Server: Apache/2.4.29
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Headers: Content-Type
+  Access-Control-Allow-Methods: POST
+  Access-Control-Max-Age: 1000
+  Content-Length: 58
+  Content-Type: application/json
+
+  {"jsonrpc":"2.0","result":{"maintenanceids":["1"]},"id":3}
+
+
 
 
 
