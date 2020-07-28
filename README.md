@@ -253,12 +253,12 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   ```` 
 * VMWARE - Troca do driver da placa de rede Broadcom no VMWARE 6.x - Problema de Latencia extrema e perda de pacotes na rede LAN e SAN
   ```` 
-   esxcli system maintenanceMode set –enable true  #procedimento deve ser realizado em modo manutenção.             
+   esxcli system maintenanceMode set –enable=true  #procedimento deve ser realizado em modo manutenção.             
    esxcfg-nics -l                                  #exibe os drivers que estão sendo utilizados
    esxcfg-module -d ntg3                           #desabilita o driver ntg3
    esxcfg-module -e tg3                            #habilita o driver tg3
    init 6                                          #reboot
-   esxcli system maintenanceMode set --enable false  #sair do modo manutenção     
+   esxcli system maintenanceMode set --enable=false  #sair do modo manutenção     
    ```` 
 * VMWARE - Para melhorar performace rede SAN ISCSI desabilitando "delayed ack"
   - Fonte: https://kb.vmware.com/s/article/1002598
