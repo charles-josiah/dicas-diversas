@@ -56,6 +56,17 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
  
 ## Linux
 
+* LINUX - mostar interface e ipv4 das placas de rede
+  ````
+  #exemplo
+  $ echo; for a in `ip addr show | grep mtu | awk '{print substr($2, 1, length($2)-1)}'`; do echo -n "Placa: $a - IP: "; ip -4 -o addr show $a | awk '{print $4}'; done; echo 
+
+  Placa: lo - IP: 127.0.0.1/8
+  Placa: eth1 - IP: 10.56.12.14/24
+  $
+  $
+  ````
+  
 * LINUX - operações com SED inline
   ````
   sed -i.bkp   '1,/\ \ user:..*/s/\ \ user:..*/  user: charles.a/' *.yaml     #encontra o primeiro "match" e realiza a substituição
