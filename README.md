@@ -200,7 +200,6 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
 
   #status do vmware-tools das maquinas ligadas e não atualizadas com saida para um arquivo csv.
   get-vm | where {$_.powerstate -ne "PoweredOff" } | where {$_.Guest.ToolsVersionStatus -ne "guestToolsCurrent"} | % { get-view $_.id } | select Name, @{ Name="ToolsVersion"; Expression={$_.config.tools.toolsVersion}}, @{ Name="ToolStatus"; Expression={$_.Guest.ToolsVersionStatus}} | Export-Csv -NoTypeInformation -UseCulture -Path /tmp/VMHWandToolsInfo.csv
-  
   ````
 
 * VMWARE - Troca da senha de root do HOST VMWare ESXi via VCenter
@@ -225,7 +224,6 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
      Write-Host ("Resetting password for: " + $vmhost) #Debug line so admin can see what's happening.
      $esxcli.system.account.set.Invoke($esxcliargs) #Run command, if returns "true" it was successful.
   } 
-
   ````
   
 * VMWARE - Mostrar a data de instalação de um HOST Vmware ESXi via VCenter
@@ -248,7 +246,6 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
     InstallDate=$installDate
    } # end custom object
   } # end host loop
-
   ````
 * VMWARE - Boas praticas de configuração de LUN/Controladora ISCSI no VMWare e Compelent SCv2020
   - Fonte: https://downloads.dell.com/manuals/common/sc-series-vmware-vsphere-best-practices_en-us.pdf
@@ -345,6 +342,19 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   PS /root> $Output = foreach ($VM in $VMs){ Get-CDDrive $VM | select Parent, IsoPath }
   PS /root> echo $Output                  #exibir na tela
   PS /root> $Output | Export-Csv          #mandar para csv
+  ````
+* VMWARE - Habilitar SNMP no Host Vmware
+  ```` 
+  esxcli system snmp set -r                                                            #reset na config
+  esxcli system snmp set -c  <comunidade>                                              #comunidade do snmp, recomendado nao utilizar public
+  esxcli system snmp set -p 161                                                        #PORTA
+  esxcli system snmp set -C  ch@rles.xyz                                               #syscontact ou contato 
+  esxcli system snmp set -L  "Em algum lugar no Data Center"                           # syslocation ou localizacao 
+  esxcli network firewall ruleset set --ruleset-id snmp --allowed-all false            #configurcao do firewall 
+  esxcli network firewall ruleset allowedip add --ruleset-id snmp --ip-address X.X.X.X # <IP OU RANGE do Servidor que fara a coleta>
+  esxcli network firewall ruleset set --ruleset-id snmp --enabled true                 #configuracao do firewall 
+  esxcli system snmp set --enable true                                                 #habilita servico
+  /etc/init.d/snmpd restart                                                            #restart do servico
   ```` 
 <hr>
 
