@@ -52,6 +52,17 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   zmmailbox -z -m  <email>  addMessage /<IMAP DIR>  1783-1607.msg   
   
   ````
+* ZIMBRA - Exibir todas as sessões ativas. E mata-lás !
+  ````
+  echo "exibir: "
+  
+  /opt/zimbra/bin/zmsoap -z -v GetSessionsRequest @type=soap  #sessoes web
+  /opt/zimbra/bin/zmsoap -z -v GetSessionsRequest @type=imap  #sessoes imap
+  /opt/zimbra/bin/zmsoap -z -v GetSessionsRequest @type=admin #sessoes do admin
+  
+  echo "Vamos invalidar todas:"
+  for a in `/opt/zimbra/bin/zmsoap -z -v GetSessionsRequest @type=soap | awk '{ print $5 } ' | sed s/name=// | sed s/\"//g` ; do zmprov ma $a  zimbraAuthTokenValidityValue  1; done
+  ````
  <hr>
  
 ## Linux
