@@ -63,6 +63,12 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   echo "Vamos invalidar todas:"
   for a in `/opt/zimbra/bin/zmsoap -z -v GetSessionsRequest @type=soap | awk '{ print $5 } ' | sed s/name=// | sed s/\"//g` ; do zmprov ma $a  zimbraAuthTokenValidityValue  1; done
   ````
+* ZIMBRA - Ao iniciar o zimbra apresentando erro de conexão TLS ao acessão a arvore LDAP.
+  ```` 
+  Unable to start TLS: SSL connect attempt failed error:14090086:SSL routines:ssl3_get_server_certificate:certificate verify failed when connecting to ldap master.
+  [zimbra@mail ~]$ zmlocalconfig -e ldap_starttls_required=false
+  [zimbra@mail ~]$ zmlocalconfig -e ldap_starttls_supported=0
+  ````
  <hr>
  
 ## Linux
