@@ -373,6 +373,16 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   esxcli system snmp set --enable true                                                 #habilita servico
   /etc/init.d/snmpd restart                                                            #restart do servico
   ```` 
+ * VMWARE - Configurar placa de rede via CLI no VCenter 6.x
+  ```` 
+  /opt/vmware/share/vami/vami_config_net
+  ```` 
+ * VMWARE - Habilitar sshd via CLI no VCenter 6.x
+  ```` 
+  systemctl unmask sshd
+  systemctl start sshd
+  systemctl enable sshd
+  ```` 
 <hr>
 
 ## MACOS 
