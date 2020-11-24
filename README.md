@@ -72,11 +72,24 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
  <hr>
  
 ## Linux
+* LINUX - Tunel SOCKS via SSH. Tunel estará disponivel no porta 2611 na localhost. So configurar o browser, em proxy para esta porta.
+  ````
+  ssh -v  -D 2611 -C -q -N  cha.rles.xyz
+  ````
+* LINUX - Tunel SSH para "exportar" uma porta remota para uma porta na sua estação local
+  ````
+  Terminal local 1:  ssh -L 2222:172.31.16.2:22 ch@rles.xyz
+  Terminal local 2:  ssh charles.a@localhost -p 2222
+  ````
+* LINUX - Tunel SSH para "exportar" uma porta do seu servidor/estação local para um servidor remoto (muito bom para nao precisar fazer NAT)
+  ````
+  Terminal local 1:  ssh -R 2222:127.0.0.1:22 ch@rles.xyz
+  Terminal remoto 1:  ssh charles.a@localhost -p 2222
+  ````
 * LINUX - Limpar tabela MAC
   ````
   ip -s -s neigh flush all
   ````
-
 * LINUX - mostar interface e ipv4 das placas de rede
   ````
   #exemplo
