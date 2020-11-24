@@ -508,7 +508,7 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   diag debug flow show  function-name enable 
   diag debug flow show iprope enable 
   diag debug flow filter addr 173.243.138.68 
-  diag  debug flow filter addr 12.34.97.16 
+  diag debug flow filter addr 12.34.97.16 
   diag debug flow filter addr 208.91.112.53
   diag debug flow filter addr 96.45.33.88
   diag debug flow trace start 100
