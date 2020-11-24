@@ -72,6 +72,10 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
  <hr>
  
 ## Linux
+* LINUX - Limpar tabela MAC
+  ````
+  ip -s -s neigh flush all
+  ````
 
 * LINUX - mostar interface e ipv4 das placas de rede
   ````
@@ -438,7 +442,12 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
 <hr>
 
 ## Fortinet 
-  
+* FGT - FortiGate Authentication timeout - Tempo de autenticacao do usuario conectado na vpn, por padrão 8hs, depois o usuario é derrubado.
+  ````
+  config vpn ssl settings
+     set auth-timeout 42200  (12hs) 
+  end 
+  ````  
 * FGT - Reinicia a tabela de roteamento
   ````
   diagnose firewall iprope flush
@@ -492,6 +501,23 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   diag deb dis
   diag deb reset
   ````
+* FGT - Debug registro do Fortigate nos servidores da FGT e atualização das licenças (versão melhorada do item anterior).
+  ````
+  diag debug reset
+  diag debug flow filter clear
+  diag debug flow show  function-name enable 
+  diag debug flow show iprope enable 
+  diag debug flow filter addr 173.243.138.68 
+  diag  debug flow filter addr 12.34.97.16 
+  diag debug flow filter addr 208.91.112.53
+  diag debug flow filter addr 96.45.33.88
+  diag debug flow trace start 100
+  diagnose debug application update -1
+  diagnose debug enable 
+  execute update-now 
+  ````
+  
+  
 * FGT - Status da "caixa" e do Cluster HA
   ````
   get system status
