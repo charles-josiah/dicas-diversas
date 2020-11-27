@@ -72,6 +72,33 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
  <hr>
  
 ## Linux
+* LINUX - Serviço na porta 5535 - Link-Local Multicast Name Resolution - Centos/Ubuntu
+  ````
+   cat  /etc/systemd/resolved.conf 
+      #  This file is part of systemd.
+      #
+      #  systemd is free software; you can redistribute it and/or modify it
+      #  under the terms of the GNU Lesser General Public License as published by
+      #  the Free Software Foundation; either version 2.1 of the License, or
+      #  (at your option) any later version.
+      #
+      # Entries in this file show the compile time defaults.
+      # You can change settings by editing this file.
+      # Defaults can be restored by simply deleting this file.
+      #
+      # See resolved.conf(5) for details
+
+      [Resolve]
+      #DNS=
+      #FallbackDNS=
+      #Domains=
+      LLMNR=no            #   <--------- ALTERAR de YES para NO, e init 6
+      #MulticastDNS=yes
+      #DNSSEC=allow-downgrade
+      #DNSOverTLS=no
+      #Cache=yes
+      #DNSStubListener=udp
+  ````
 * LINUX - Tunel SOCKS via SSH. Tunel estará disponivel no porta 2611 na localhost. So configurar o browser, em proxy para esta porta.
   ````
   ssh -v  -D 2611 -C -q -N  cha.rles.xyz
