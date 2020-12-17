@@ -200,6 +200,12 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   ````
   fio --randrepeat=1 --ioengine=libaio --direct=1 --gtod_reduce=1 --name=test --filename=test --bs=4k --iodepth=64 --size=4G --readwrite=randrw --rwmixread=75
   ````
+* Linux - Configuração interface bond0 via NetworkManager, mncli,  com mode 802.3ad ativo-ativo
+  ````
+  nmcli connection add type bond con-name bond0 ifname bond0 bond.option "mode=4,miimon=100" ipv4.method manual ipv4.address "XX.YY.ZZ.AA/BB" ipv6.method ignore
+  nmcli connection add type ethernet con-name bond0_slave2 ifname eno2 master bond0 slave-type bond
+  nmcli connection add type ethernet con-name bond0_slave1 ifname eno1 master bond0 slave-type bond
+  ````
 <hr>
 
 ## VMWARE 
