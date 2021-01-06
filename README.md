@@ -631,6 +631,12 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
     set type fortiguard
   end
   ````
+* FGT - Registrar Forticloud em conta diferente que oe Forticare.
+  kb: https://kb.fortinet.com/kb/documentLink.do?externalID=FD48719
+  ````
+   # execute fortiguard-log login <email> <password>
+  ````
+  
 ## Zabbix
 
 * ZBX - “rascunho” basico de como usar a API do Zabbix com o curl do linux, objetivo de demonstrar o funcionamento.
