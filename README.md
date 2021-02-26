@@ -206,6 +206,29 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   nmcli connection add type ethernet con-name bond0_slave2 ifname eno2 master bond0 slave-type bond
   nmcli connection add type ethernet con-name bond0_slave1 ifname eno1 master bond0 slave-type bond
   ````
+* Linux - OpenSSL -  para extrair o Fingerprint e Serial do certificado
+  ````
+  #Fingerprint 
+  openssl s_client -connect <host>:<port> < /dev/null 2>/dev/null | openssl x509 -fingerprint -noout -in /dev/stdin
+  #Fingerprint em SHA256
+  openssl s_client -connect <host>:<port> < /dev/null 2>/dev/null | openssl x509 -fingerprint -sha256 -noout -in /dev/stdin
+  #Serial
+  openssl s_client -connect <host>:<port> < /dev/null 2>/dev/null | openssl x509 -serial -sha256 -noout -in /dev/stdin
+  ````
+  
+  validar se certificado esta revogado
+ openssl x509 -noout -ocsp_uri -in ea2bb65cb33310b3.crt 
+openssl ocsp -issuer gd_bundle-g2-g1.crt -cert ea2bb65cb33310b3.pem -text -url http://ocsp.godaddy.com/  -header "HOST" "ocsp.godaddy.com"
+
+* Linux - OpenSSL - validar se o certificado foi revogado
+  ````
+  #Primeiramente achar o endereço OSCP
+  #_> openssl x509 -noout -ocsp_uri -in <certificado>.crt 
+  #_> http://ocsp.godaddy.com/
+  #Com o link OSCP, usar o certificado intermediario (no caso godady) para valiar o certificado
+  openssl ocsp -issuer gd_bundle-g2-g1.crt -cert <certificado>.crt -text -url http://ocsp.godaddy.com/ 
+  ````
+  
 <hr>
 
 ## VMWARE 
