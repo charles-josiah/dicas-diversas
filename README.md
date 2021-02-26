@@ -214,12 +214,6 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   openssl s_client -connect <host>:<port> < /dev/null 2>/dev/null | openssl x509 -fingerprint -sha256 -noout -in /dev/stdin
   #Serial
   openssl s_client -connect <host>:<port> < /dev/null 2>/dev/null | openssl x509 -serial -sha256 -noout -in /dev/stdin
-  ````
-  
-  validar se certificado esta revogado
- openssl x509 -noout -ocsp_uri -in ea2bb65cb33310b3.crt 
-openssl ocsp -issuer gd_bundle-g2-g1.crt -cert ea2bb65cb33310b3.pem -text -url http://ocsp.godaddy.com/  -header "HOST" "ocsp.godaddy.com"
-
 * Linux - OpenSSL - validar se o certificado foi revogado
   ````
   #Primeiramente achar o endereço OSCP
