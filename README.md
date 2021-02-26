@@ -200,6 +200,18 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   ````
   fio --randrepeat=1 --ioengine=libaio --direct=1 --gtod_reduce=1 --name=test --filename=test --bs=4k --iodepth=64 --size=4G --readwrite=randrw --rwmixread=75
   ````
+* Linux - SAR - analise de IOPs dos discos. <h6> Referencia: https://www.thegeekstuff.com/2011/03/sar-examples/?utm_source=feedburner </h6>
+  ````
+  iostat  -m 1 30
+  sar -b 1 3
+
+  tps – Transactions per second (this includes both read and write)
+  rtps – Read transactions per second
+  wtps – Write transactions per second
+  bread/s – Bytes read per second
+  bwrtn/s – Bytes written per second
+
+  ````
 * Linux - Configuração interface bond0 via NetworkManager, mncli,  com mode 802.3ad ativo-ativo
   ````
   nmcli connection add type bond con-name bond0 ifname bond0 bond.option "mode=4,miimon=100" ipv4.method manual ipv4.address "XX.YY.ZZ.AA/BB" ipv6.method ignore
@@ -222,6 +234,12 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   #Com o link OSCP, usar o certificado intermediario (no caso godady) para valiar o certificado
   openssl ocsp -issuer gd_bundle-g2-g1.crt -cert <certificado>.crt -text -url http://ocsp.godaddy.com/ 
   ````
+* Linux - DIG - usar dig para fazer trace de respostas dns 
+  ````
+  #dig @servidor de consulta -x endereço 
+  dig @8.8.8.8 -x 200.25.257.274 +trace
+  ````
+  
   
 <hr>
 
