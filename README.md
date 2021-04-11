@@ -468,6 +468,10 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
    systemctl start sshd
    systemctl enable sshd
    ```` 
+ * VMWARE - Inventario via powercli, resultado final em um csv com as colunas: Name, Configured OS, Running OS, OS Version, Disktype, NumCpu, MemoryGB, TotalHDD, ProvisionedSpaceGB, UsedSpaceGB, IP, VMHost, PowerState
+   ```` 
+   Get-VM | Select Name,@{N=”Configured OS”;E={$_.ExtensionData.Config.GuestFullname}},@{N=”Running OS”;E={$_.Guest.OsFullName}}, @{N=”disktype”;E={(Get-Harddisk $_).Storageformat}},  NumCpu, MemoryGB, @{N="TotalHDD"; E={($_ | Get-HardDisk).count }}, ProvisionedSpaceGB, UsedSpaceGB,  @{N="IP";E={@($_.guest.IPaddress)}}, VMHost, PowerState | Export-Csv -Path /tmp/inventario.csv
+   ```` 
 <hr>
 
 ## MACOS 
