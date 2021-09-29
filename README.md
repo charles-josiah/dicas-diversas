@@ -103,6 +103,17 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   ````
   ssh -v  -D 2611 -C -q -N  cha.rles.xyz
   ````
+* LINUX - Dica para criar unidade LVM mais eficientemente  
+  ````
+  #usando parted
+  for a in {disco1,disco2....}; do fdisk -l /dev/$a; done    #exibe partição
+  for a in {disco1,disco2....}; do echo $a; parted -s /dev/$a mklabel gpt; parted -s /dev/$a unit mib mkpart primary 1 100%; parted -s /dev/$a set 1 lvm on; done
+  for a in {disco1,disco2....}; do pvcreate /dev/"$a"1; vgextend vg_<DESEJADO> /dev/"$a"1; done
+  
+  #fdisk
+  printf "o\nn\np\n1\n\n\nt\n8e\n\n\nw\n" | fdisk /dev/<disco>
+
+  ````
 * LINUX - Tunel SSH para "exportar" uma porta remota para uma porta na sua estação local
   ````
   Terminal local 1:  ssh -L 2222:172.31.16.2:22 ch@rles.xyz
