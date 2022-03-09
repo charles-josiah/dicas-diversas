@@ -612,8 +612,11 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   diagnose debug enable 
   execute update-now 
   ````
-  
-  
+* FGT - Sniffer nas interfaces com syntax on tcpdump
+  ````
+  diagnose sniffer packet any 
+  diagnose sniffer packet port1 none 1 3
+  ````
 * FGT - Status da "caixa" e do Cluster HA
   ````
   get system status
