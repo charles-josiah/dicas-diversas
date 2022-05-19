@@ -250,6 +250,15 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   #dig @servidor de consulta -x endereço 
   dig @8.8.8.8 -x 200.25.257.274 +trace
   ````
+* Linux - Reboot/Shutdown - Exibir ultimos resets/reboot/shutdowns e uptime
+  ````
+  #_> uptime 
+  #_> who -b
+  #_> last 
+  #_> last -x
+  #_> last -x reboot
+  #_> last -x shutdown
+  ````
   
   
 <hr>
