@@ -12,9 +12,23 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
 [Fortinet](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#Fortinet) <br> 
 [Zabbix](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#Zabbix) <br> 
 
-
 <hr>
 
+## AWS 
+* AWS - How To List All Enabled Regions Within An AWS account
+  ````
+  for a in `aws ec2 describe-regions --all-regions | jq -r '.Regions | .[] | .RegionName + " " + .OptInStatus'  | grep -v not-opted-in | cut -d' ' -f1 
+  ````
+* AWS - Finding Unattached Elastic IPs via AWS CLI
+  ````
+  aws ec2 describe-addresses --filters "Name=domain,Values=vpc" --query "Addresses[?AssociationId==null]"  
+  ````
+* AWS - Release Unattached Elastic IPs via AWS CLI
+  ````
+  aws ec2 release-address --public-ip <public-ip>
+  ````
+<hr>
+    
 ## Zimbra
 * ZIMBRA - Gerar lista com as "Listas de Distribuição" e seus integrantes:
   ````
