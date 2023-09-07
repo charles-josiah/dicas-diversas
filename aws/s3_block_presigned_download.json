@@ -1,0 +1,46 @@
+"//  sample policy for s3 denying pre-signed urls"
+"// ref: "
+"//   https://github.com/vmware-tanzu/velero/issues/1945"
+"//   https://aws.amazon.com/blogs/storage/using-presigned-urls-to-identify-per-requester-usage-of-amazon-s3/"
+"//   https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-s3-access-logs-to-identify-requests.html"
+"//   https://medium.com/altostra/working-with-s3-pre-signed-urls-fb0603fb2d64"
+"//   https://docs.aws.amazon.com/AmazonS3/latest/API/bucket-policy-s3-sigv4-conditions.html"
+{
+	"Version": "2012-10-17",
+	"Id": "S3-Console-Auto-Gen-Policy-1694043731551",
+	"Statement": [
+		{
+			"Sid": "S3PolicyStmt-DO-NOT-MODIFY-1694043731019",
+			"Effect": "Allow",
+			"Principal": {
+				"Service": "logging.s3.amazonaws.com"
+			},
+			"Action": "s3:PutObject",
+			"Resource": "arn:aws:s3:::teste-presign-123/*"
+		},
+            {
+                  "Sid": "Allow only requests that use Authorization header for request authentication. Deny POST or presigned URL requests.",
+                  "Effect": "Deny",
+                  "Principal": "*",
+                  "Action": "s3:*",
+                  "Resource": "arn:aws:s3:::teste-presign-123/*",
+                  "Condition": {
+                        "StringNotEquals": {
+                              "s3:x-amz-content-sha256": "UNSIGNED-PAYLOAD"
+                        }
+                  }
+            },
+            {
+               "Sid": "Allow only requests that use Authorization header for request authentication. Deny POST or presigned URL requests.",
+               "Effect": "Deny",
+               "Principal": "*",
+               "Action": "s3:*",
+               "Resource": "arn:aws:s3:::teste-presign-123/*",
+               "Condition": {
+                     "StringNotEquals": {
+                           "s3:authType": "REST-HEADER"
+                     }
+               }
+            }
+   ]
+}
