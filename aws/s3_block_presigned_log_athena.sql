@@ -1,5 +1,8 @@
 ## https://repost.aws/knowledge-center/analyze-logs-athena
 ## Amazon S3 stores server access logs as objects in an S3 bucket. Use Athena to quickly analyze and query server access logs.
+## Samples querys:
+## SELECT requestdatetime, requester,  "httpstatus", "key", remoteip, bytessent FROM s3_access_logs_db.mybucket_logs WHERE  "operation"='REST.GET.OBJECT' ORDER BY requestdatetime DESC
+## SELECT *  FROM s3_access_logs_db.mybucket_logs ORDER BY requestdatetime DESC LIMIT 10;
   
 CREATE EXTERNAL TABLE `s3_access_logs_db.mybucket_logs`(
   `bucketowner` STRING, 
