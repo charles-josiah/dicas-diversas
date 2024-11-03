@@ -1,65 +1,73 @@
 
-# OPNsense Firewall Rule Management with Python and Postman
+# OPNsense Firewall Rule Management Guide
 
 ## Introduction
-This guide covers how to create, modify, and manage firewall rules on OPNsense using Python and Postman. It includes examples of JSON payloads, API calls, and configurations to facilitate rule creation.
+This comprehensive guide explains how to create, modify, and manage firewall rules on OPNsense using Python, Postman, and `curl`. It includes detailed examples of JSON payloads, API calls, and configurations to simplify the process.
 
 ## Table of Contents
 - [Python Script for Firewall Rules](#python-script-for-firewall-rules)
 - [Using `curl` for API Calls](#using-curl-for-api-calls)
-- [Postman Setup](#postman-setup)
+- [Configuring Postman](#configuring-postman)
 - [Example JSON Payloads](#example-json-payloads)
+- [Ansible Playbook Example](#ansible-playbook-example)
+- [Conclusion](#conclusion)
 
 ## Python Script for Firewall Rules
-Below is an example Python script that interacts with the OPNsense API to add a firewall rule:
+Below is an example of a Python script that interacts with the OPNsense API to add a firewall rule.
 
 ```python
 #!/usr/bin/env python3.7
 import requests
 import json
 
-# key + secret from downloaded apikey.txt
+# Replace with your API key and secret
 api_key = "YOUR_API_KEY"
 api_secret = "YOUR_API_SECRET"
 
-# Define the remote URI and rule description
-rule_description = 'OPNsense_fw_api_testrule_1'
+# Base URI for OPNsense
 remote_uri = "https://192.168.1.1"
+rule_description = 'OPNsense_fw_api_testrule_1'
 
-# Search for an existing rule
-r = requests.get(
+# Search for an existing rule by description
+response = requests.get(
     f"{remote_uri}/api/firewall/filter/searchRule?current=1&rowCount=7&searchPhrase={rule_description}",
     auth=(api_key, api_secret), verify=False
 )
 
-if r.status_code == 200:
-    response = json.loads(r.text)
-    if len(response['rows']) == 0:
+if response.status_code == 200:
+    data = json.loads(response.text)
+    if not data['rows']:
         # Create a new rule
-        data = {
+        rule_data = {
             "rule": {
-                "description": rule_description,
-                "source_net": "192.168.0.0/24",
+                "interface": "wan",
+                "direction": "in",
+                "source_net": "any",
+                "destination_net": "192.168.2.0/24",
+                "destination_port": "80",
                 "protocol": "TCP",
-                "destination_net": "10.0.0.0/24"
+                "description": "allow traffic on WAN to DMZ for port 80",
+                "action": "pass",
+                "enabled": True
             }
         }
-        r = requests.post(
+        create_response = requests.post(
             f"{remote_uri}/api/firewall/filter/addRule",
-            auth=(api_key, api_secret), verify=False, json=data
+            auth=(api_key, api_secret), verify=False, json=rule_data
         )
-        if r.status_code == 200:
-            print(f"Created: {json.loads(r.text)['uuid']}")
+        if create_response.status_code == 200:
+            print(f"Rule created: {json.loads(create_response.text)['uuid']}")
         else:
-            print(f"Error: {r.text}")
+            print(f"Error: {create_response.text}")
     else:
-        for row in response['rows']:
-            print(f"Found UUID: {row['uuid']}")
+        for row in data['rows']:
+            print(f"Found existing rule UUID: {row['uuid']}")
+else:
+    print(f"Failed to search for rule: {response.status_code}")
 ```
 
 ## Using `curl` for API Calls
-### Adding a Rule with `curl`:
-Example `curl` command to add a rule from the `wan` interface to a specific destination network:
+To make API calls using `curl`, you can use the following command to create a rule:
 
 ```bash
 curl -k -u "API_KEY:API_SECRET" \
@@ -79,18 +87,19 @@ curl -k -u "API_KEY:API_SECRET" \
     }
 }'
 ```
-## Postman Setup
-1. **Method**: Select `POST` or `GET` as needed.
-2. **URL**: Example: `https://192.168.1.1/api/firewall/filter/addRule`.
-3. **Authorization**: 
-   - Choose `Basic Auth` and input the `API_KEY` and `API_SECRET`.
-4. **Headers**:
-   - Add `Content-Type: application/json`.
-5. **Body**:
-   - Use **raw** input for JSON payloads.
 
-### Example JSON Payloads
-#### Rule to Allow Port 80
+## Configuring Postman
+To use Postman for managing OPNsense rules:
+
+1. **Set the Method**: Select `POST` or `GET` as required.
+2. **Enter the URL**: Example: `https://192.168.1.1/api/firewall/filter/addRule`.
+3. **Authorization**: Use `Basic Auth` and input your `API_KEY` and `API_SECRET`.
+4. **Headers**: Set `Content-Type` to `application/json`.
+5. **Body**: Use raw input to include the JSON payload.
+
+### Sample JSON Payloads
+
+#### Allow Port 80 Traffic
 ```json
 {
     "rule": {
@@ -107,7 +116,7 @@ curl -k -u "API_KEY:API_SECRET" \
 }
 ```
 
-#### Rule to Allow Port 22
+#### Allow Port 22 Traffic
 ```json
 {
     "rule": {
@@ -118,14 +127,69 @@ curl -k -u "API_KEY:API_SECRET" \
         "destination_port": "22",
         "protocol": "TCP",
         "description": "POSTMAN - allow traffic on WAN to DMZ for port 22",
-        "action": "pass",
         "quick": true,
         "sequence": 2,
         "ip_protocol": "inet",
+        "action": "pass",
         "enabled": true
     }
 }
 ```
 
+## Ansible Playbook Example
+For those using Ansible, below is an example to automate rule management:<br>
+Ref.: https://github.com/ansibleguy/collection_opnsense
+
+```yaml
+---
+- hosts: firewall
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: Allow traffic on WAN to DMZ for port 80
+      ansibleguy.opnsense.rule:
+        source_net: 'any'
+        destination_net: '192.168.2.0/24'
+        destination_port: 80
+        protocol: 'TCP'
+        description: 'allow traffic on WAN to DMZ for port 80'
+        interface: 'wan'
+        direction: 'in'
+        action: 'pass'
+        state: 'present'
+        enabled: true
+
+    - name: Allow traffic on WAN to DMZ for port 22
+      ansibleguy.opnsense.rule:
+        source_net: 'any'
+        destination_net: '192.168.2.0/24'
+        destination_port: 22
+        protocol: 'TCP'
+        description: 'POSTMAN - allow traffic on WAN to DMZ for port 22'
+        interface: 'wan'
+        direction: 'in'
+        quick: true
+        sequence: 2
+        ip_protocol: 'inet'
+        action: 'pass'
+        state: 'present'
+        enabled: true
+```
+
+### Ansible Execution Output
+```bash
+PLAY [firewall] ********************************************************************
+
+TASK [Allow traffic on WAN to DMZ for port 80] *************************************
+changed: [192.168.1.1]
+
+TASK [Allow traffic on WAN to DMZ for port 22] *************************************
+changed: [192.168.1.1]
+
+PLAY RECAP **************************************************************************
+192.168.1.1                : ok=2    changed=2    unreachable=0    failed=0
+```
+
 ## Conclusion
-This guide helps set up and manage firewall rules in OPNsense using Python, `curl`, and Postman. Ensure the correct interface names and configurations are used for seamless integration.
+This guide provides a step-by-step process for managing firewall rules in OPNsense using Python, `curl`, Postman, and Ansible. Proper use of these tools ensures efficient and accurate rule management.
