@@ -2,7 +2,7 @@
 # OPNsense Firewall Rule Management Guide
 
 ## Introduction
-This comprehensive guide explains how to create, modify, and manage firewall rules on OPNsense using Python, Postman, and `curl`. It includes detailed examples of JSON payloads, API calls, and configurations to simplify the process.
+This comprehensive guide explains how to create, modify, and manage firewall rules on OPNsense using Python, Postman, Ansible and `curl`. It includes detailed examples of JSON payloads, API calls, and configurations to simplify the process.
 
 ## Table of Contents
 - [Python Script for Firewall Rules](#python-script-for-firewall-rules)
