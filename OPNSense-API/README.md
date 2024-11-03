@@ -10,9 +10,6 @@ This guide covers how to create, modify, and manage firewall rules on OPNsense u
 - [Postman Setup](#postman-setup)
 - [Example JSON Payloads](#example-json-payloads)
 
-## Python Script for Firewall Rules
-Below is an example Python script that interacts with the OPNsense API to add a firewall rule:
-
 ```python
 #!/usr/bin/env python3.7
 import requests
