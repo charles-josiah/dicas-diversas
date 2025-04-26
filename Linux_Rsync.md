@@ -49,8 +49,7 @@ rsync -avz --info=progress2 --stats --from0 --files-from=- -e "ssh -p 22" . root
 - `--files-from=-`: Recebe a lista de arquivos pela entrada padrão.
 - `-e "ssh -p 22"`: Utiliza SSH na porta 22 para conectar ao servidor remoto.
 - `.`: Diretório de origem atual.
-- `root@10.35.101.65:/opt/OS/DEFAULT/`: Caminho de destino no servidor.
-
+- `root@10.10.10.15:/opt/`: Caminho de destino no servidor.
 ---
 
 ### 3. Gerar Logs de Sucesso e Erro
@@ -71,7 +70,6 @@ rsync -avz --info=progress2 --stats --from0 --files-from=- -e "ssh -p 22" . root
 ## Fluxo Resumido
 
 ```mermaid
-flowchart TD
     A[Find arquivos modificados há 4 meses] --> B[Lista arquivos com separador nulo]
     B --> C[rsync sincroniza apenas arquivos listados]
     C --> D{Resultado}
