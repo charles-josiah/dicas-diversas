@@ -10,7 +10,8 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
 [VMWARE](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#VMWARE) <br> 
 [MACOS](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#MACOS) <br> 
 [Fortinet](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#Fortinet) <br> 
-[Zabbix](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#Zabbix) <br> 
+[Zabbix](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#Zabbix) <br>
+[Proxy Reverso no cPanel/WHM](https://github.com/charles-josiah/dicas-diversas/blob/master/Proxy_Reverso_Cpanel.md)<br>
 
 <hr>
 
