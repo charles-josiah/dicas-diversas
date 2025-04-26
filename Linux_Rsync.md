@@ -70,6 +70,7 @@ rsync -avz --info=progress2 --stats --from0 --files-from=- -e "ssh -p 22" . root
 ## Fluxo Resumido
 
 ```mermaid
+flowchart TD
     A[Find arquivos modificados há 4 meses] --> B[Lista arquivos com separador nulo]
     B --> C[rsync sincroniza apenas arquivos listados]
     C --> D{Resultado}
