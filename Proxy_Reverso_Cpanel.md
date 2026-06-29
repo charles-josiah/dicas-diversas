@@ -125,3 +125,6 @@ $ curl  https://apirev.faznada.com
 - Mesmo que o `# Include` esteja comentado nos VirtualHosts, o Apache do cPanel processa **automaticamente** o que estiver em `/etc/apache2/conf.d/userdata/`.
 - Sempre use `/scripts/rebuildhttpdconf` antes de restartar o Apache.
 - **Não editar** manualmente o `httpd.conf` em servidores cPanel!
+
+
+:wq!
