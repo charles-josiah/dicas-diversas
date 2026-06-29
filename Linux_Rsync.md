@@ -95,3 +95,6 @@ Este procedimento é **seguro**, **automatizado** e **ideal** para ambientes ond
 - Apenas alterações recentes precisam ser copiadas,
 - Há necessidade de registros claros de sucesso/erro,
 - A performance e a confiabilidade da transferência são fundamentais.
+
+
+:wq!
