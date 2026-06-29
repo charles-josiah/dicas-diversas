@@ -96,3 +96,6 @@ kubectl -n kube-system describe daemonset kube-proxy | grep Image
 kubectl -n kube-system get pods -l k8s-app=kube-proxy -o jsonpath="{range .items[*]}{.metadata.name}: {.spec.containers[0].image}{'\\n'}{end}"
 kubectl get daemonset kube-proxy -n kube-system -o jsonpath='{.spec.template.spec.containers[0].image}'
 ```
+
+
+:wq!
