@@ -181,3 +181,6 @@ oci_download "" /var/tmp
 3. Editar `~/.bashrc`: adicionar `exports` e a função `oci_download`.  
 4. `source ~/.bashrc`.  
 5. Rodar `oci_download` e escolher o índice.
+
+
+:wq!
