@@ -19,7 +19,8 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
 [Linux - Rsync](https://github.com/charles-josiah/dicas-diversas/blob/master/Linux_Rsync.md)<br>
 [Linux - CUPS](https://github.com/charles-josiah/dicas-diversas/blob/master/CUPS.md)<br>
 [Linux - Monitor de Memória e Swap](https://github.com/charles-josiah/dicas-diversas/blob/master/Linux-MonitorMemoriaSwap.md)<br>
-[Linux - OCI - Bucket Navigator](https://github.com/charles-josiah/dicas-diversas/blob/master/Linux-OCI-Bucket_Navigator.md)<br>
+[Linux - OCI - Bucket Navigator (PT)](https://github.com/charles-josiah/dicas-diversas/blob/master/Linux-OCI-Bucket_Navigator.md)<br>
+[Linux - OCI - Bucket Navigator / oci_download (EN)](https://github.com/charles-josiah/dicas-diversas/blob/master/Linux-OCI-Bucket_Navigator.en.md)<br>
 [Linux - OCI - IPs Secundários via NetworkManager Dispatcher (PT)](https://github.com/charles-josiah/dicas-diversas/blob/master/Linux-OCI-IPs_Secundarios_NetworkManager.md)<br>
 [Linux - OCI - Persistent Secondary IPs via NetworkManager Dispatcher (EN)](https://github.com/charles-josiah/dicas-diversas/blob/master/Linux-OCI-Secondary-IPs-NetworkManager.en.md)<br>
 [OPNSense - API](https://github.com/charles-josiah/dicas-diversas/blob/master/OPNSense-API)<br>
