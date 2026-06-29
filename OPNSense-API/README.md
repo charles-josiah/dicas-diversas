@@ -193,3 +193,6 @@ PLAY RECAP *********************************************************************
 
 ## Conclusion
 This guide provides a step-by-step process for managing firewall rules in OPNsense using Python, `curl`, Postman, and Ansible. Proper use of these tools ensures efficient and accurate rule management.
+
+
+:wq!
