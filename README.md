@@ -7,12 +7,22 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
 
 [Zimbra](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#Zimbra) <br>
 [Linux](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#Linux)  <br>
-[Linux - Proxy Reverso no cPanel/WHM](https://github.com/charles-josiah/dicas-diversas/blob/master/Proxy_Reverso_Cpanel.md)<br>
-[Linux - Rsync](https://github.com/charles-josiah/dicas-diversas/blob/master/Linux_Rsync.md)<br>
 [VMWARE](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#VMWARE) <br> 
 [MACOS](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#MACOS) <br> 
 [Fortinet](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#Fortinet) <br> 
 [Zabbix](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#Zabbix) <br>
+[AWS](https://github.com/charles-josiah/dicas-diversas/blob/master/README.md#AWS) <br>
+
+**Guias / HOWTOs (arquivos)**
+
+[Linux - Proxy Reverso no cPanel/WHM](https://github.com/charles-josiah/dicas-diversas/blob/master/Proxy_Reverso_Cpanel.md)<br>
+[Linux - Rsync](https://github.com/charles-josiah/dicas-diversas/blob/master/Linux_Rsync.md)<br>
+[Linux - CUPS](https://github.com/charles-josiah/dicas-diversas/blob/master/CUPS.md)<br>
+[Linux - Monitor de Memória e Swap](https://github.com/charles-josiah/dicas-diversas/blob/master/Linux-MonitorMemoriaSwap.md)<br>
+[Linux - OCI - Bucket Navigator](https://github.com/charles-josiah/dicas-diversas/blob/master/Linux-OCI-Bucket_Navigator.md)<br>
+[Linux - OCI - IPs Secundários via NetworkManager Dispatcher (PT)](https://github.com/charles-josiah/dicas-diversas/blob/master/Linux-OCI-IPs_Secundarios_NetworkManager.md)<br>
+[Linux - OCI - Persistent Secondary IPs via NetworkManager Dispatcher (EN)](https://github.com/charles-josiah/dicas-diversas/blob/master/Linux-OCI-Secondary-IPs-NetworkManager.en.md)<br>
+[OPNSense - API](https://github.com/charles-josiah/dicas-diversas/blob/master/OPNSense-API)<br>
 
 <hr>
 
@@ -819,7 +829,6 @@ Dicas diversas sobre comandos Linux, MACOS, Fortinet, Zimbra, VMWARE, Zabbix e o
   Content-Type: application/json
 
   {"jsonrpc":"2.0","result":[{"hostid":"10372"}],"id":0}
-
 
   #Criar janela de manutenção, e ativar manutenção no host.  
   #Para data de inicio, é em segundo… então `date %s` e o retorno somar mais o tempo desejado. :D 
