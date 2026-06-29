@@ -32,7 +32,7 @@ TOTAL_SWAP_KB=$(free -k | awk '/^Swap:/{print $2}')
 [ -z "$TOTAL_SWAP_KB" ] && TOTAL_SWAP_KB=1
 
 # Cabeçalho da saída
-echo -e "User	Swap(MB)	%Swap"
+echo -e "User\tSwap(MB)\t%Swap"
 
 # Itera por cada usuário que possui processos rodando
 for U in $(ps -eo user= | awk '{print $1}' | sort -u); do
@@ -53,7 +53,7 @@ for U in $(ps -eo user= | awk '{print $1}' | sort -u); do
   MB=$(( (SUM_KB+1023) / 1024 ))
   # Calcula percentual de swap usado pelo usuário
   PCT=$(awk -v s=$SUM_KB -v t=$TOTAL_SWAP_KB 'BEGIN{printf "%.2f", (t>0 ? (s/t*100) : 0)}')
-  echo -e "$U	$MB		$PCT%"
+  echo -e "$U\t$MB\t\t$PCT%"
 done
 ```
 
@@ -99,9 +99,9 @@ fi
 
 # Cabeçalho da saída
 if [ $SHOW_CMD -eq 1 ]; then
-  echo -e "PID	Swap(MB)	Comando Completo"
+  echo -e "PID\tSwap(MB)\tComando Completo"
 else
-  echo -e "PID	Swap(MB)	Comando"
+  echo -e "PID\tSwap(MB)\tComando"
 fi
 
 # Itera pelos processos do usuário
@@ -117,7 +117,7 @@ for pid in $(pgrep -u "$USER_TARGET"); do
                 cmd=$(ps -p $pid -o comm= 2>/dev/null)
             fi
             mb=$((swap/1024))
-            echo -e "$pid	$mb		$cmd"
+            echo -e "$pid\t$mb\t\t$cmd"
         fi
     fi
 done | sort -k2 -nr   # Ordena por consumo de swap (maior primeiro)
@@ -139,3 +139,6 @@ PID     Swap(MB)   Comando
 
 ---
 
+
+
+:wq!
