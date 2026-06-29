@@ -1,6 +1,8 @@
 
 # ☁️ OCI Bucket Navigator — Guia & Função `oci_download`
 
+> 🇬🇧 **English version:** [Linux-OCI-Bucket_Navigator.en.md](Linux-OCI-Bucket_Navigator.en.md)
+
 Este guia documenta uma função de *shell* para **listar, indexar e baixar** objetos de um bucket da **Oracle Cloud Infrastructure (OCI)** diretamente do terminal, escolhendo o arquivo pelo **índice** exibido na listagem.
 
 > **Por que colocar no `.bashrc`?**  
@@ -51,7 +53,12 @@ oci_download() {
   local obj_name out
 
   echo "=== Lista de objetos no bucket $BUCKET_NAME ==="
-  oci os object list     --namespace-name "$NAMESPACE"     --bucket-name "$BUCKET_NAME"     --all   | jq -r '.data | to_entries[] | [ .key, .value.size, .value."time-created", .value.name ] | @tsv'   | awk -F'	' '
+  oci os object list \
+    --namespace-name "$NAMESPACE" \
+    --bucket-name "$BUCKET_NAME" \
+    --all \
+  | jq -r '.data | to_entries[] | [ .key, .value.size, .value."time-created", .value.name ] | @tsv' \
+  | awk -F'\t' '
     function human(n, units, i) {
       split("B KB MB GB TB PB", units, " ");
       for (i=1; n>=1024 && i<length(units); i++) n/=1024;
@@ -68,7 +75,11 @@ oci_download() {
   fi
 
   obj_name="$(
-    oci os object list       --namespace-name "$NAMESPACE"       --bucket-name "$BUCKET_NAME"       --all     | jq -r --argjson i "$idx" '.data[$i].name'
+    oci os object list \
+      --namespace-name "$NAMESPACE" \
+      --bucket-name "$BUCKET_NAME" \
+      --all \
+    | jq -r --argjson i "$idx" '.data[$i].name'
   )"
 
   if [[ -z "$obj_name" || "$obj_name" == "null" ]]; then
@@ -80,7 +91,11 @@ oci_download() {
   out="$dest/$(basename -- "$obj_name")"
   echo "Baixando: $obj_name -> $out"
 
-  oci os object get     --namespace-name "$NAMESPACE"     --bucket-name "$BUCKET_NAME"     --name "$obj_name"     --file "$out"
+  oci os object get \
+    --namespace-name "$NAMESPACE" \
+    --bucket-name "$BUCKET_NAME" \
+    --name "$obj_name" \
+    --file "$out"
 }
 ```
 
@@ -166,11 +181,3 @@ oci_download "" /var/tmp
 3. Editar `~/.bashrc`: adicionar `exports` e a função `oci_download`.  
 4. `source ~/.bashrc`.  
 5. Rodar `oci_download` e escolher o índice.
-
----
-
-
-
-
-
-:wq!
