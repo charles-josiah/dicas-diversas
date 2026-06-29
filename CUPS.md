@@ -208,3 +208,6 @@ Impressora: Epson_Wifi | IP: 192.168.0.60 -> OFFLINE
    ```
 
 ---
+
+
+:wq!
